@@ -1,0 +1,35 @@
+<!-- FILE: blog.html (This will be your main blog page at yoursite.com/blog) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARGUIDE Blog | Compassionate Life Insurance Guidance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style> body { font-family: 'Inter', sans-serif; } </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <!-- HEADER (Same as your main page) -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="/#home" class="text-2xl font-bold text-slate-900">🛡️ ARGUIDE</a>
+            <ul class="hidden md:flex items-center space-x-6 text-slate-600 font-medium">
+                <li><a href="/#about" class="hover:text-sky-600 transition-colors">My Why</a></li>
+                <li><a href="/#education" class="hover:text-sky-600 transition-colors">The Basics</a></li>
+                <li><a href="/#checkup" class="hover:text-sky-600 transition-colors">Needs Checkup</a></li>
+                <li><a href="/#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-lg shadow-md">Request a Consultation</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container mx-auto px-4 py-12">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-900">The ARGUIDE Blog</h1>
+            <p class="text-lg text-slate-600 mt-2">Insights and guidance to help you protect what matters most.</p>
+        </div>
+        <div id="post-list" class="max-w-3xl mx-auto space-y-8">
+            <!-- Blog posts will be injected here by Netlify -->
+        </div>
+    </main>
+</body>
+</html>
