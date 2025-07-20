@@ -28,8 +28,38 @@
             <p class="text-lg text-slate-600 mt-2">Insights and guidance to help you protect what matters most.</p>
         </div>
         <div id="post-list" class="max-w-3xl mx-auto space-y-8">
-            <!-- Blog posts will be injected here by Netlify -->
+            <!-- Blog posts will be injected here by JavaScript -->
         </div>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const postList = document.getElementById('post-list');
+            try {
+                const response = await fetch('/blog/posts.json');
+                if (!response.ok) throw new Error('Network response was not ok');
+                const posts = await response.json();
+
+                if (posts.length === 0) {
+                    postList.innerHTML = '<p>No blog posts found.</p>';
+                    return;
+                }
+
+                posts.forEach(post => {
+                    const postElement = document.createElement('a');
+                    postElement.href = `/post-template.html?post=${post.file}`;
+                    postElement.className = 'block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow';
+                    
+                    postElement.innerHTML = `
+                        <h2 class="text-2xl font-bold text-slate-800 hover:text-sky-600">${post.title}</h2>
+                        <p class="text-slate-500 mt-2">Published on: ${new Date(post.date).toLocaleDateString()}</p>
+                    `;
+                    postList.appendChild(postElement);
+                });
+            } catch (error) {
+                console.error('Error fetching blog posts:', error);
+                postList.innerHTML = '<p>Could not load blog posts. Please try again later.</p>';
+            }
+        });
+    </script>
 </body>
 </html>

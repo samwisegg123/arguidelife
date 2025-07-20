@@ -1,7 +1,3 @@
----
-title: 5 Questions to Ask Before You Buy Any Life Insurance Policy
----
-
 Buying life insurance can feel overwhelming. It’s a world of jargon, complex products, and sales pressure. After losing my father without any preparation, I learned firsthand how confusing it can be. That experience is why I became an agent—to help families navigate this process with clarity and confidence.
 
 Before you sign any application, you deserve to feel 100% certain about your decision. The right agent won’t just sell you a policy; they will act as your guide.
@@ -31,8 +27,6 @@ This question tests an agent's ability to be a teacher, not just a salesperson. 
 * **Permanent is like owning.** It’s designed to last your entire life and can build cash value, making it a tool for lifelong needs like final expenses or estate planning.
 
 There is no "best" type of insurance—only what's best for *your* goals.
-
-*(**Infographic Idea:** A simple side-by-side visual comparing "Renting" vs. "Owning" with icons for a calendar (Term) and a house (Permanent).)*
 
 ### 4. "What does the application and underwriting process look like?" 🩺
 

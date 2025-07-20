@@ -1,7 +1,3 @@
----
-title: My Father's Story Why a Will and Life Insurance Are the Greatest Acts of Love
----
-
 In 2025, my father passed away from a stroke. He was 64. He was healthy. He wasn't on any medication. One moment he was here, and the next, he was gone.
 
 The grief was overwhelming. But what I didn't expect was the second wave that hit right after: the chaos.

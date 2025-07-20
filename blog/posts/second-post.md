@@ -1,7 +1,3 @@
----
-title: Term vs. Permanent Life Insurance The Honest, Jargon-Free Guide
----
-
 If you’ve started looking into life insurance, you’ve probably seen the words "Term" and "Permanent" everywhere. The industry often makes these concepts seem far more complicated than they actually are.
 
 Let’s clear up the confusion with a simple, honest guide.
@@ -37,8 +33,6 @@ Permanent insurance is designed for needs that will always be there, no matter h
 * **Supplementing Retirement:** The cash value component can grow over time and can be accessed to supplement your income in retirement.
 
 ### Comparison at a Glance
-
-*(**Infographic Idea:** A clean, simple table comparing the two.)*
 
 | Feature | Term Life | Permanent Life |
 | :--- | :--- | :--- |

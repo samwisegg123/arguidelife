@@ -1,15 +1,2 @@
 [build]
   publish = "/"
-
-[[plugins]]
-  package = "netlify-plugin-blog"
-
-  [plugins.inputs]
-    # Path to the folder containing your blog posts
-    posts_folder = "blog/posts"
-
-    # Path to the main blog page (where the list of posts will be shown)
-    blog_path = "blog.html"
-
-    # Path to the template for a single blog post
-    post_template = "post-template.html"
