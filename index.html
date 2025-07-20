@@ -309,15 +309,42 @@ To help me prepare for my strategy session with my licensed agent at ARGUIDE, pl
 
     </main>
     
-    <!-- FOOTER / CONTACT SECTION -->
+    <!-- CONTACT & FOOTER SECTION -->
     <footer id="contact" class="bg-slate-800 text-white py-16">
-        <div class="container mx-auto px-4 text-center">
+        <div class="container mx-auto px-4 text-center max-w-3xl">
             <h2 class="text-3xl md:text-4xl font-bold">Ready to Secure Your Family's Future?</h2>
-            <p class="text-lg text-slate-300 mt-4 max-w-2xl mx-auto">Let's translate your results into a real plan. I'm here to provide honest, pressure-free guidance. Reach out today for a complimentary consultation.</p>
-            <div class="mt-8">
-                <a href="mailto:Arguidelife@gmail.com" class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 px-8 rounded-lg shadow-lg transition-transform transform hover:scale-105 text-lg">Email Me to Start the Conversation</a>
-                <p class="mt-4 text-slate-400">Arguidelife@gmail.com</p>
-            </div>
+            <p class="text-lg text-slate-300 mt-4">Let's translate your results into a real plan. Complete the form below, and I'll personally reach out to schedule your complimentary, pressure-free consultation.</p>
+            
+            <form name="contact" id="contact-form" method="POST" data-netlify="true" class="mt-8 text-left max-w-lg mx-auto space-y-4">
+                <input type="hidden" name="form-name" value="contact" />
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-slate-300">Full Name</label>
+                        <input type="text" name="name" id="name" required class="form-input mt-1 bg-slate-700 text-white border-slate-600 focus:border-sky-500 focus:ring-sky-500">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-slate-300">Email Address</label>
+                        <input type="email" name="email" id="email" required class="form-input mt-1 bg-slate-700 text-white border-slate-600 focus:border-sky-500 focus:ring-sky-500">
+                    </div>
+                </div>
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-slate-300">Phone Number (Optional)</label>
+                    <input type="tel" name="phone" id="phone" class="form-input mt-1 bg-slate-700 text-white border-slate-600 focus:border-sky-500 focus:ring-sky-500">
+                </div>
+                <div>
+                    <label for="ai_response" class="block text-sm font-medium text-slate-300">AI Analysis / Simulation Results</label>
+                    <textarea name="ai_response" id="ai_response" rows="5" class="form-input mt-1 bg-slate-700 text-white border-slate-600 focus:border-sky-500 focus:ring-sky-500" placeholder="If you used the AI prompt, you can paste the response here."></textarea>
+                </div>
+                <div>
+                    <label for="questions" class="block text-sm font-medium text-slate-300">What's on your mind? / Questions for me</label>
+                    <textarea name="questions" id="questions" rows="4" required class="form-input mt-1 bg-slate-700 text-white border-slate-600 focus:border-sky-500 focus:ring-sky-500" placeholder="Let me know what you're hoping to accomplish or any questions you have."></textarea>
+                </div>
+                <div id="hidden-data-container"></div>
+                <div class="text-center pt-2">
+                    <button type="submit" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-transform transform hover:scale-105 text-lg">Request My Free Consultation</button>
+                </div>
+            </form>
+
             <p class="text-xs text-slate-500 mt-12">
                 This website provides a simplified estimate for informational purposes and is not financial advice. A licensed agent can provide a comprehensive analysis.
             </p>
@@ -406,7 +433,20 @@ To help me prepare for my strategy session with my licensed agent at ARGUIDE, pl
             };
             
             displayResults();
+            populateContactForm();
         });
+
+        function populateContactForm() {
+            const container = document.getElementById('hidden-data-container');
+            container.innerHTML = ''; // Clear previous data
+            for (const key in userFinancialData) {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = `data_${key}`;
+                input.value = userFinancialData[key];
+                container.appendChild(input);
+            }
+        }
 
         function displayResults() {
             view1.classList.add('hidden');
