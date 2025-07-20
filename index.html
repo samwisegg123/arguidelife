@@ -3,122 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARGUIDE: Life Insurance with Clarity and Compassion</title>
+    
+    <!-- SEO & LLMO - Primary Meta Tags -->
+    <title>ARGUIDE | Compassionate Life Insurance Guidance</title>
+    <meta name="description" content="A human-first approach to life insurance, empowered by smart technology. Get an honest, data-driven look at your needs with our AI-powered tools, then work with a real person to build the right plan. No jargon, no pressure.">
+    <meta name="keywords" content="life insurance, life insurance agent, term life insurance, permanent life insurance, IUL, financial needs analysis, insurance calculator">
+
+    <!-- SEO & LLMO - Open Graph / Facebook / LinkedIn Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ARGUIDE | Compassionate Life Insurance Guidance">
+    <meta property="og:description" content="A human-first approach to life insurance, empowered by smart technology. Get an honest, data-driven look at your needs, then work with a real person to build the right plan.">
+    <meta property="og:url" content="https://www.yourdomain.com/">
+    <meta property="og:site_name" content="ARGUIDE">
+
+    <!-- SEO & LLMO - Structured Data (Schema.org) for Google and AI -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "ARGUIDE",
+      "provider": {
+        "@type": "Person",
+        "name": "Your Name"
+      },
+      "description": "ARGUIDE provides compassionate, human-first guidance on life insurance. We use smart, AI-powered tools to help families get a clear, data-driven understanding of their needs, followed by a one-on-one consultation with a licensed professional to build the right plan with no pressure or jargon.",
+      "serviceType": "Life Insurance",
+      "areaServed": "USA",
+      "url": "https://www.yourdomain.com/"
+    }
+    </script>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Calm Harmony (Slate/Sky Blue on a Neutral Gray background) -->
-    <!-- Application Structure Plan: A multi-section, single-page website that guides the user on a journey. A fixed navigation bar allows smooth scrolling between sections: Hero, About, Education, the Checkup Tool, Carriers, and Contact. This creates the feel of a full, professional website within a single, manageable HTML file. -->
-    <!-- Visualization & Content Choices: The site uses a mix of compelling text (the "My Why" story), clear informational sections, and the interactive Chart.js calculator. The structure is designed to build trust and educate before asking the user for information. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .step-active {
-            border-color: #0ea5e9; /* sky-500 */
-            color: #0ea5e9;
-        }
-        .step-active .step-circle {
-            background-color: #0ea5e9;
-            color: white;
-        }
-        .step-inactive {
-            border-color: #e5e7eb; /* gray-200 */
-            color: #6b7280; /* gray-500 */
-        }
-        .step-inactive .step-circle {
-            background-color: #e5e7eb;
-            color: #6b7280;
-        }
-        .form-input {
-            width: 100%;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            border: 1px solid #d1d5db;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        .form-input:focus {
-            outline: none;
-            border-color: #0ea5e9;
-            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
-        }
-        input[type=range] {
-            -webkit-appearance: none;
-            width: 100%;
-            margin: 0.5rem 0;
-            background: transparent;
-        }
-        input[type=range]:focus {
-            outline: none;
-        }
-        input[type=range]::-webkit-slider-runnable-track {
-            width: 100%;
-            height: 8px;
-            cursor: pointer;
-            background: #d1d5db;
-            border-radius: 5px;
-        }
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            height: 24px;
-            width: 24px;
-            border-radius: 50%;
-            background: #0ea5e9;
-            cursor: pointer;
-            margin-top: -8px;
-        }
-        input[type=range]::-moz-range-track {
-            width: 100%;
-            height: 8px;
-            cursor: pointer;
-            background: #d1d5db;
-            border-radius: 5px;
-        }
-        input[type=range]::-moz-range-thumb {
-            height: 24px;
-            width: 24px;
-            border-radius: 50%;
-            background: #0ea5e9;
-            cursor: pointer;
-            border: none;
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 400px;
-        }
-         @media (min-width: 768px) {
-            .chart-container {
-                 height: 400px;
-            }
-        }
-        .gemini-output {
-            white-space: pre-wrap;
-            line-height: 1.6;
-        }
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #0ea5e9;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; }
+        .form-input { width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid #d1d5db; transition: border-color 0.2s, box-shadow 0.2s; }
+        .form-input:focus { outline: none; border-color: #0ea5e9; box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2); }
+        .chart-container { position: relative; width: 100%; max-width: 400px; margin-left: auto; margin-right: auto; height: 300px; max-height: 400px; }
+        @media (min-width: 768px) { .chart-container { height: 400px; } }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -150,9 +77,9 @@
         
         <!-- HERO SECTION -->
         <section id="home" class="text-center py-16 md:py-24">
-            <h1 class="text-4xl md:text-6xl font-bold text-slate-900 leading-tight">Life Insurance with Clarity and Compassion.</h1>
-            <p class="text-lg md:text-xl text-slate-600 mt-4 max-w-3xl mx-auto">A human-first approach, empowered by smart technology. Get an honest, data-driven look at your needs, then work with a real person to build the right plan.</p>
-            <a href="#checkup" class="mt-8 inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 px-8 rounded-lg shadow-lg transition-transform transform hover:scale-105 text-lg">Start Your 3-Minute Checkup</a>
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-slate-900 leading-tight">Life Insurance with Clarity and Compassion.</h1>
+            <p class="text-base sm:text-lg md:text-xl text-slate-600 mt-4 max-w-3xl mx-auto">A human-first approach, empowered by smart technology. Get an honest, data-driven look at your needs, then work with a real person to build the right protection plan.</p>
+            <a href="#checkup" class="mt-8 inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg transition-transform transform hover:scale-105 text-lg">Start Your 3-Minute Checkup</a>
         </section>
 
         <!-- ABOUT ME ("MY WHY") SECTION -->
@@ -181,36 +108,34 @@
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-lg">
                     <h3 class="text-2xl font-bold text-sky-600">Permanent Life Insurance</h3>
-                    <p class="mt-2 text-slate-600">Think of this like owning protection. It's designed to last your entire life and often includes a "cash value" component that can grow over time. It's ideal for covering permanent needs like final expenses, leaving a legacy, or supplementing retirement income.</p>
+                    <p class="mt-2 text-slate-600">Think of this like owning protection. It's designed to last your entire life and often includes a "cash value" component that can grow over time. It's ideal for covering permanent needs like final expenses, leaving a legacy, or for more complex estate planning strategies.</p>
                 </div>
             </div>
         </section>
 
         <!-- CHECKUP TOOL SECTION -->
         <section id="checkup" class="py-16 md:py-24">
-            <!-- View 1: Data Input -->
             <div id="view-1" class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
                 <div class="text-center mb-8">
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-800">The ARGUIDE Needs Checkup</h2>
-                    <p class="text-lg text-slate-500 mt-2">I built this AI-powered tool to give you a clear, data-driven head start on your financial protection plan. This is the starting point for our one-on-one conversation.</p>
+                    <p class="text-lg text-slate-500 mt-2">I built this tool to give you a clear, data-driven head start on your financial protection plan. This is the starting point for our one-on-one conversation.</p>
                     <div class="mt-6 text-sm text-slate-500 max-w-2xl mx-auto bg-slate-100 p-4 rounded-lg">
-                        <p>This calculator uses two industry-standard methods to provide a comprehensive estimate: <strong class="text-slate-700">DIME Analysis</strong> (Debt, Income, Mortgage, Education) to cover your obligations, and <strong class="text-slate-700">FIN Analysis</strong> (Final Expenses, Income Replacement, Needs of Dependents) to secure your family's lifestyle.</p>
+                        <p>This calculator uses two industry-standard methods to provide a comprehensive estimate: <strong class="text-slate-700">DIME Analysis</strong> (Debt, Income, Mortgage, Education) and <strong class="text-slate-700">FIN Analysis</strong> (Final Expenses, Income Replacement, Needs of Dependents).</p>
                     </div>
                 </div>
                 
                 <form id="needs-form" class="space-y-8 mt-10">
-                    <!-- Form content from previous version goes here -->
                     <div>
                         <h3 class="text-xl font-semibold text-slate-700 border-b pb-2 mb-4">👨‍👩‍👧‍👦 About the Family</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div><label class="font-medium text-slate-600">Your Age</label><input type="number" id="your_age" class="form-input mt-1" placeholder="e.g., 35"></div>
-                            <div><label class="font-medium text-slate-600">Spouse/Partner's Age</label><input type="number" id="spouse_age" class="form-input mt-1" placeholder="e.g., 34 (or leave blank)"></div>
-                            <div><label class="font-medium text-slate-600">Number of Dependents</label><input type="number" id="dependents" class="form-input mt-1" placeholder="e.g., 2"></div>
-                            <div><label class="font-medium text-slate-600">Your General Health</label>
+                            <div><label class="font-medium text-slate-600">Your Age</label><input type="number" id="your_age" class="form-input mt-1" placeholder="e.g., 35" min="18" max="100"></div>
+                            <div><label class="font-medium text-slate-600">Spouse/Partner's Age (Optional)</label><input type="number" id="spouse_age" class="form-input mt-1" placeholder="e.g., 34" min="18" max="100"></div>
+                            <div><label class="font-medium text-slate-600">Number of Dependents</label><input type="number" id="dependents" class="form-input mt-1" placeholder="e.g., 2" min="0"></div>
+                            <div><label class="font-medium text-slate-600" for="health_status">General Health</label>
                                 <select id="health_status" class="form-input mt-1">
-                                    <option>Excellent</option>
-                                    <option>Good</option>
-                                    <option>Fair</option>
+                                    <option value="excellent">Excellent</option>
+                                    <option value="good">Good</option>
+                                    <option value="fair">Fair</option>
                                 </select>
                             </div>
                         </div>
@@ -218,24 +143,24 @@
                     <div>
                         <h3 class="text-xl font-semibold text-slate-700 border-b pb-2 mb-4">🏦 Financial Landscape</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                             <div class="md:col-span-2"><p class="text-sm text-slate-500 -mt-2 mb-2">Enter your combined household numbers for the fields below.</p></div>
-                            <div><label class="font-medium text-slate-600">Mortgage Balance</label><input type="number" id="mortgage" class="form-input mt-1" placeholder="$300,000"></div>
-                            <div><label class="font-medium text-slate-600">Other Debts (Student, Auto, CC)</label><input type="number" id="other_debt" class="form-input mt-1" placeholder="$50,000"></div>
-                            <div><label class="font-medium text-slate-600">Liquid Savings</label><input type="number" id="savings" class="form-input mt-1" placeholder="$25,000"></div>
-                            <div><label class="font-medium text-slate-600">Investments (401k, IRA, Brokerage etc.)</label><input type="number" id="investments" class="form-input mt-1" placeholder="$150,000"></div>
-                            <div class="md:col-span-2"><label class="font-medium text-slate-600">Existing Life Insurance (Work & Personal, You and Spouse)</label><input type="number" id="existing_insurance" class="form-input mt-1" placeholder="$200,000"></div>
+                            <div><label class="font-medium text-slate-600">Mortgage Balance</label><input type="number" id="mortgage" class="form-input mt-1" placeholder="$300,000" min="0"></div>
+                            <div><label class="font-medium text-slate-600">Other Debts (Student, Auto, CC)</label><input type="number" id="other_debt" class="form-input mt-1" placeholder="$50,000" min="0"></div>
+                            <div><label class="font-medium text-slate-600">Liquid Savings</label><input type="number" id="savings" class="form-input mt-1" placeholder="$25,000" min="0"></div>
+                            <div><label class="font-medium text-slate-600">Investments (401k, etc.)</label><input type="number" id="investments" class="form-input mt-1" placeholder="$150,000" min="0"></div>
+                            <div class="md:col-span-2"><label class="font-medium text-slate-600">Existing Life Insurance</label><input type="number" id="existing_insurance" class="form-input mt-1" placeholder="$200,000" min="0"></div>
                         </div>
                     </div>
                     <div>
                         <h3 class="text-xl font-semibold text-slate-700 border-b pb-2 mb-4">🎯 Financial Goals</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div><label class="font-medium text-slate-600">Total Annual Household Income</label><input type="number" id="annual_income" class="form-input mt-1" placeholder="$120,000"></div>
+                            <div><label class="font-medium text-slate-600">Total Annual Household Income</label><input type="number" id="annual_income" class="form-input mt-1" placeholder="$120,000" min="0"></div>
                             <div>
-                                <label for="income_years" class="font-medium text-slate-600">Years to Replace Income: <span id="years-display" class="font-bold text-sky-600">15</span> years</label>
-                                <input type="range" id="income_years" min="1" max="30" value="15" class="mt-2">
+                                <label for="income_years" class="font-medium text-slate-600">Years to Replace Income</label>
+                                <input type="number" id="income_years" class="form-input mt-1" value="15" placeholder="e.g., 20">
+                                <p class="text-xs text-slate-500 mt-1">How long will your dependents need support? (e.g., until kids are 18 or 25)</p>
                             </div>
-                            <div><label class="font-medium text-slate-600">College Funding Goal</label><input type="number" id="college" class="form-input mt-1" placeholder="$100,000"></div>
-                            <div><label class="font-medium text-slate-600">Final Expenses Estimate</label><input type="number" id="final_expenses" class="form-input mt-1" value="25000" placeholder="$25,000"></div>
+                            <div><label class="font-medium text-slate-600">College Funding Goal</label><input type="number" id="college" class="form-input mt-1" placeholder="$100,000" min="0"></div>
+                            <div><label class="font-medium text-slate-600">Final Expenses Estimate</label><input type="number" id="final_expenses" class="form-input mt-1" value="25000" placeholder="$25,000" min="0"></div>
                         </div>
                     </div>
                     <div class="text-center pt-4">
@@ -245,9 +170,7 @@
                     </div>
                 </form>
             </div>
-
-            <!-- View 2 & 3 (Results and Next Steps) will be dynamically shown here -->
-            <div id="results-container"></div>
+            <div id="results-container" class="mt-8"></div>
         </section>
 
         <!-- CARRIERS SECTION -->
@@ -256,29 +179,7 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Finding Your Perfect Fit</h2>
                 <p class="text-lg text-slate-600 mt-4">I am an independent agent, which means I work for you, not an insurance company. I partner with over 20 top-rated carriers to shop the market and find the best policy for your unique needs and budget.</p>
                 <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-8 gap-y-4 text-slate-500 text-sm">
-                    <p>Aetna</p>
-                    <p>Aflac</p>
-                    <p>AMERICAN AMICABLE</p>
-                    <p>Americo</p>
-                    <p>Ameritas</p>
-                    <p>Baltimore Life</p>
-                    <p>Catholic Financial</p>
-                    <p>Combined</p>
-                    <p>Corebridge</p>
-                    <p>Ethos</p>
-                    <p>Fidelity Life</p>
-                    <p>Gerber Life</p>
-                    <p>Illinois Mutual</p>
-                    <p>Kansas City Life</p>
-                    <p>Ladder</p>
-                    <p>LCBA</p>
-                    <p>Manhattan Life</p>
-                    <p>Mutual of Omaha</p>
-                    <p>National Life Group</p>
-                    <p>Reagan AI</p>
-                    <p>Royal Arcanum</p>
-                    <p>SBLI</p>
-                    <p>United Home Life</p>
+                    <p>Aetna</p><p>Aflac</p><p>AMERICAN AMICABLE</p><p>Americo</p><p>Ameritas</p><p>Baltimore Life</p><p>Catholic Financial</p><p>Combined</p><p>Corebridge</p><p>Ethos</p><p>Fidelity Life</p><p>Gerber Life</p><p>Illinois Mutual</p><p>Kansas City Life</p><p>Ladder</p><p>LCBA</p><p>Manhattan Life</p><p>Mutual of Omaha</p><p>National Life Group</p><p>Reagan AI</p><p>Royal Arcanum</p><p>SBLI</p><p>United Home Life</p>
                 </div>
             </div>
         </section>
@@ -306,7 +207,6 @@ To help me prepare for my strategy session with my licensed agent at ARGUIDE, pl
                 </div>
             </div>
         </section>
-
     </main>
     
     <!-- CONTACT & FOOTER SECTION -->
@@ -344,13 +244,11 @@ To help me prepare for my strategy session with my licensed agent at ARGUIDE, pl
                     <button type="submit" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-transform transform hover:scale-105 text-lg">Request My Complimentary Consultation</button>
                 </div>
             </form>
-
             <p class="text-xs text-slate-500 mt-12">
                 This website provides a simplified estimate for informational purposes and is not financial advice. A licensed agent can provide a comprehensive analysis.
             </p>
         </div>
     </footer>
-
 
     <script>
         // --- MOBILE MENU ---
@@ -388,145 +286,112 @@ To help me prepare for my strategy session with my licensed agent at ARGUIDE, pl
         const view1 = document.getElementById('view-1');
         const resultsContainer = document.getElementById('results-container');
         const calculateBtn = document.getElementById('calculate-btn');
-        const incomeYearsSlider = document.getElementById('income_years');
-        const yearsDisplay = document.getElementById('years-display');
-
+        
         let needsChart = null;
         let userFinancialData = {};
         
         const currencyFormatter = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-        });
-
-        incomeYearsSlider.addEventListener('input', (e) => {
-            yearsDisplay.textContent = e.target.value;
+            style: 'currency', currency: 'USD',
+            minimumFractionDigits: 0, maximumFractionDigits: 0,
         });
         
         const getVal = (id) => parseFloat(document.getElementById(id).value) || 0;
         const getStr = (id) => document.getElementById(id).value || 'N/A';
 
         calculateBtn.addEventListener('click', () => {
-            const mortgage = getVal('mortgage');
-            const otherDebt = getVal('other_debt');
-            const college = getVal('college');
-            const finalExpenses = getVal('final_expenses');
-            const savings = getVal('savings');
-            const investments = getVal('investments');
-            const existingInsurance = getVal('existing_insurance');
-            const annualIncome = getVal('annual_income');
-            const incomeYears = getVal('income_years');
-
-            const totalDebt = mortgage + otherDebt;
-            const lumpSumNeeds = totalDebt + college + finalExpenses;
-            const incomeNeeds = annualIncome * incomeYears;
-            const totalNeeds = lumpSumNeeds + incomeNeeds;
-            const totalAssets = savings + investments + existingInsurance;
-            const netNeed = totalNeeds - totalAssets > 0 ? totalNeeds - totalAssets : 0;
-            
+            const age = getVal('your_age');
+            if (age < 18) {
+                alert('Please enter an age of 18 or older.');
+                return;
+            }
             userFinancialData = {
-                age: getVal('your_age'), health: getStr('health_status'), dependents: getVal('dependents'),
-                mortgage, otherDebt, college, finalExpenses, savings, investments, existingInsurance,
-                annualIncome, incomeYears, totalDebt, lumpSumNeeds, incomeNeeds, totalNeeds, totalAssets, netNeed
+                age: age, spouseAge: getVal('spouse_age'), health: getStr('health_status'), dependents: getVal('dependents'),
+                mortgage: getVal('mortgage'), otherDebt: getVal('other_debt'), college: getVal('college'),
+                finalExpenses: getVal('final_expenses'), savings: getVal('savings'), investments: getVal('investments'),
+                existingInsurance: getVal('existing_insurance'), annualIncome: getVal('annual_income'), incomeYears: getVal('income_years'),
             };
+            const { totalDebt, lumpSumNeeds, incomeNeeds, totalNeeds, totalAssets, netNeed } = calculateNeeds(userFinancialData);
+            userFinancialData = { ...userFinancialData, totalDebt, lumpSumNeeds, incomeNeeds, totalNeeds, totalAssets, netNeed };
             
             displayResults();
             populateContactForm();
         });
 
-        function populateContactForm() {
-            const container = document.getElementById('hidden-data-container');
-            container.innerHTML = ''; // Clear previous data
-            for (const key in userFinancialData) {
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = `data_${key}`;
-                input.value = userFinancialData[key];
-                container.appendChild(input);
+        function calculateNeeds(data) {
+            const totalDebt = data.mortgage + data.otherDebt;
+            const lumpSumNeeds = totalDebt + data.college + data.finalExpenses;
+            const incomeNeeds = data.annualIncome * data.incomeYears;
+            const totalNeeds = lumpSumNeeds + incomeNeeds;
+            const totalAssets = data.savings + data.investments + data.existingInsurance;
+            const netNeed = totalNeeds > totalAssets ? totalNeeds - totalAssets : 0;
+            return { totalDebt, lumpSumNeeds, incomeNeeds, totalNeeds, totalAssets, netNeed };
+        }
+
+        function getSuggestedStrategy(data) {
+            const permanentNeedRatio = (data.finalExpenses + (data.annualIncome * 0.1)) / data.totalNeeds;
+            let strategy = {
+                title: "Potential Strategy to Discuss: Term Insurance Focus",
+                description: "Your primary goals appear to be covering large, temporary expenses like your mortgage and replacing income for a set number of years. A common and cost-effective approach for these goals is often a Term Life policy.",
+            };
+            if (permanentNeedRatio > 0.15 || data.investments > 250000) {
+                strategy = {
+                    title: "Potential Strategy to Discuss: A Hybrid Approach",
+                    description: "You have significant temporary needs but may also have long-term goals. A common strategy to explore is using affordable Term insurance for the large, temporary needs, and supplementing it with a smaller Permanent policy for lifelong protection.",
+                };
             }
+            return strategy;
         }
 
         function displayResults() {
             view1.classList.add('hidden');
+            const strategy = getSuggestedStrategy(userFinancialData);
+
             resultsContainer.innerHTML = `
-                <!-- View 2: Analysis & Results -->
-                <div id="view-2" class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
                     <div class="text-center mb-8">
-                        <h2 class="text-2xl font-bold text-slate-800">Your Estimated Financial Need</h2>
-                        <p class="text-slate-500 mt-1">Here is a breakdown of your needs based on the information provided.</p>
+                        <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Your Personalized Results</h2>
+                        <p class="text-lg text-slate-500 mt-1">Here is a breakdown of your needs and a potential strategy to discuss.</p>
                     </div>
-                    <div class="flex flex-col md:flex-row items-center justify-center gap-8">
-                        <div class="w-full md:w-1/2"><div class="chart-container"><canvas id="needsChart"></canvas></div></div>
-                        <div class="w-full md:w-1/2 text-center md:text-left">
+                    <div class="flex flex-col lg:flex-row items-center justify-center gap-8">
+                        <div class="w-full lg:w-1/2 text-center">
                             <p class="text-slate-600 text-lg">Net Estimated Coverage Need</p>
-                            <p id="net-need-result" class="text-4xl md:text-5xl font-bold text-sky-600 my-2">${currencyFormatter.format(userFinancialData.netNeed)}</p>
-                            <div class="mt-6 bg-slate-100 p-4 rounded-lg">
-                                <h4 class="font-semibold text-slate-700 mb-2">Breakdown of Total Needs:</h4>
-                                <ul class="space-y-1 text-slate-600">
-                                    <li><strong>Immediate (Lump-Sum):</strong> <span id="lump-sum-result">${currencyFormatter.format(userFinancialData.lumpSumNeeds)}</span></li>
-                                    <li><strong>Ongoing (Income):</strong> <span id="income-result">${currencyFormatter.format(userFinancialData.incomeNeeds)}</span></li>
+                            <p class="text-4xl md:text-5xl font-bold text-sky-600 my-2">${currencyFormatter.format(userFinancialData.netNeed)}</p>
+                            <div class="chart-container mt-4"><canvas id="needsChart"></canvas></div>
+                        </div>
+                        <div class="w-full lg:w-1/2">
+                            <div class="bg-slate-100 p-6 rounded-lg">
+                                <h3 class="text-xl font-bold text-slate-800 mb-2">How We Got This Number</h3>
+                                <p class="text-slate-600">Your total need is based on covering your major financial goals:</p>
+                                <ul class="list-disc list-inside text-slate-600 space-y-1 mt-2">
+                                    <li><strong>Debts & Final Costs:</strong> ${currencyFormatter.format(userFinancialData.lumpSumNeeds)}</li>
+                                    <li><strong>Income Replacement:</strong> ${currencyFormatter.format(userFinancialData.incomeNeeds)}</li>
                                 </ul>
-                                <div class="h-px bg-slate-300 my-2"></div>
-                                <ul class="space-y-1 text-slate-600">
-                                    <li><strong>Less Assets & Insurance:</strong> <span id="less-assets-result">-${currencyFormatter.format(userFinancialData.totalAssets)}</span></li>
-                                </ul>
+                                <p class="text-slate-600 mt-2">After accounting for your existing assets of ${currencyFormatter.format(userFinancialData.totalAssets)}, we arrived at your estimated net need.</p>
+                            </div>
+                            <div class="bg-sky-50 p-6 rounded-lg mt-6">
+                                <h3 class="text-xl font-bold text-slate-800 mb-2">${strategy.title}</h3>
+                                <p class="text-slate-600 mt-1">${strategy.description}</p>
+                            </div>
+                             <div class="bg-slate-100 p-6 rounded-lg mt-6">
+                                <h3 class="text-xl font-bold text-slate-800 mb-2">A Note on Budgeting for Protection</h3>
+                                <p class="text-slate-600">Dedicating a small percentage of your income to life insurance is a foundational part of a healthy financial plan. It's an investment in your family's security and stability.</p>
+                                <p class="text-slate-600 mt-2">This commitment doesn't just buy a policy; it secures <strong class="text-slate-700">peace of mind</strong>, protects your family's ability to stay in their home, and ensures their future opportunities are not compromised by the unexpected.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="mt-10">
-                        <div id="gemini-insights-container" class="hidden bg-sky-50 p-6 rounded-lg">
-                            <h3 class="text-xl font-semibold text-slate-700 mb-3">✨ Personalized AI Insights</h3>
-                            <div id="gemini-insights-loader" class="loader"></div>
-                            <div id="gemini-insights-output" class="text-slate-600 gemini-output"></div>
-                        </div>
-                        <div id="gemini-insights-prompt" class="text-center">
-                            <button type="button" id="generate-insights-btn" class="bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-sky-600 hover:to-indigo-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
-                                ✨ Generate Personalized Insights
-                            </button>
-                        </div>
-                    </div>
                     <div class="text-center pt-8">
-                        <button type="button" id="next-step-btn" class="bg-slate-700 hover:bg-slate-800 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-transform transform hover:scale-105">
-                            View Next Steps
-                        </button>
+                        <a href="#contact" class="bg-slate-700 hover:bg-slate-800 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                            Let's Build Your Plan
+                        </a>
                     </div>
-                </div>
-
-                <!-- View 3: Next Steps -->
-                <div id="view-3" class="hidden text-center bg-white p-6 md:p-8 rounded-xl shadow-lg mt-8">
-                    <div class="mb-6"><div class="mx-auto bg-green-100 w-16 h-16 rounded-full flex items-center justify-center"><svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div></div>
-                    <h2 class="text-2xl font-bold text-slate-800">Congratulations! You've Completed the First Step.</h2>
-                    <p class="text-slate-500 mt-2 max-w-xl mx-auto">You now have a powerful, data-driven summary. The final step is to translate these numbers into a concrete plan.</p>
-                    <div class="mt-8">
-                        <div id="gemini-email-container" class="hidden text-left bg-slate-50 border border-slate-200 p-6 rounded-lg">
-                            <h3 class="text-xl font-semibold text-slate-700 mb-3">✨ Your Conversation Starter</h3>
-                            <div id="gemini-email-loader" class="loader"></div>
-                            <textarea id="gemini-email-output" class="form-input w-full h-48 gemini-output" readonly></textarea>
-                            <button id="copy-email-btn" class="mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-lg text-sm">Copy to Clipboard</button>
-                            <span id="copy-success-msg" class="text-green-600 ml-2 hidden">Copied!</span>
-                        </div>
-                        <div id="gemini-email-prompt">
-                            <button type="button" id="generate-email-btn" class="bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-sky-600 hover:to-indigo-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
-                                ✨ Draft an Email to My Advisor
-                            </button>
-                        </div>
-                    </div>
-                     <div class="mt-6"><button id="recalculate-btn" class="text-sky-600 hover:text-sky-800 font-medium">← Go Back and Recalculate</button></div>
                 </div>
             `;
             
-            // Dynamically update the AI prompt with the calculated result
             const aiPromptElement = document.getElementById('ai-prompt-code');
             if (aiPromptElement) {
                 aiPromptElement.innerText = aiPromptElement.innerText.replace('[Enter Your Result Above]', currencyFormatter.format(userFinancialData.netNeed));
             }
 
-            // Re-bind events for newly created elements
-            bindResultViewEvents();
-
-            // Render Chart
             const chartData = {
                 labels: ['Debt', 'College', 'Final Expenses', 'Income Replacement'],
                 datasets: [{
@@ -536,6 +401,7 @@ To help me prepare for my strategy session with my licensed agent at ARGUIDE, pl
                 }]
             };
             const ctx = document.getElementById('needsChart').getContext('2d');
+            if(needsChart) { needsChart.destroy(); }
             needsChart = new Chart(ctx, {
                 type: 'doughnut', data: chartData,
                 options: {
@@ -546,96 +412,25 @@ To help me prepare for my strategy session with my licensed agent at ARGUIDE, pl
                     }
                 }
             });
-            resultsContainer.scrollIntoView();
+            resultsContainer.scrollIntoView({ behavior: 'smooth' });
         }
 
-        function bindResultViewEvents() {
-            document.getElementById('generate-insights-btn').addEventListener('click', () => {
-                const prompt = `Act as a friendly and encouraging financial analyst. Based on the following data for a client, provide a short, personalized analysis (3-4 paragraphs). Explain what their calculated life insurance need of ${currencyFormatter.format(userFinancialData.netNeed)} means in simple terms. Identify one or two potential strengths or blind spots in their financial picture and offer encouragement. Do not give specific financial product advice. Client Data: Age: ${userFinancialData.age}, Health: ${userFinancialData.health}, Dependents: ${userFinancialData.dependents}, Annual Income: ${currencyFormatter.format(userFinancialData.annualIncome)} for ${userFinancialData.incomeYears} years, Total Debt: ${currencyFormatter.format(userFinancialData.totalDebt)}, College Goal: ${currencyFormatter.format(userFinancialData.college)}, Existing Assets (Savings + Investments): ${currencyFormatter.format(userFinancialData.savings + userFinancialData.investments)}, Existing Insurance: ${currencyFormatter.format(userFinancialData.existingInsurance)}`;
-                callGeminiApi(prompt, 'gemini-insights');
-            });
-
-            document.getElementById('next-step-btn').addEventListener('click', () => {
-                document.getElementById('view-2').classList.add('hidden');
-                document.getElementById('view-3').classList.remove('hidden');
-            });
-            
-            document.getElementById('recalculate-btn').addEventListener('click', () => {
-                resultsContainer.innerHTML = '';
-                view1.classList.remove('hidden');
-            });
-            
-            document.getElementById('generate-email-btn').addEventListener('click', () => {
-                const prompt = `Act as a helpful assistant. Draft a short, clear, and friendly email from a client to their financial advisor named ARGUIDE. The email should state that the client used the online calculator and wants to discuss the results. It should mention their calculated net insurance need is ${currencyFormatter.format(userFinancialData.netNeed)}. It should also list 2-3 key questions they want to discuss, based on their goal of covering debt (${currencyFormatter.format(userFinancialData.totalDebt)}), replacing income (${currencyFormatter.format(userFinancialData.incomeNeeds)}), and funding college (${currencyFormatter.format(userFinancialData.college)}). Keep it concise and professional. Start with "Hi ARGUIDE," and end with "Best regards,".`;
-                callGeminiApi(prompt, 'gemini-email');
-            });
-
-            document.getElementById('copy-email-btn').addEventListener('click', () => {
-                const emailText = document.getElementById('gemini-email-output');
-                emailText.select();
-                emailText.setSelectionRange(0, 99999); 
-                try {
-                    document.execCommand('copy');
-                    const successMsg = document.getElementById('copy-success-msg');
-                    const btn = document.getElementById('copy-email-btn');
-                    btn.innerText = 'Copied!';
-                    successMsg.classList.remove('hidden');
-                    setTimeout(() => { 
-                        btn.innerText = 'Copy to Clipboard';
-                        successMsg.classList.add('hidden');
-                    }, 2000);
-                } catch (err) { console.error('Failed to copy text: ', err); }
-            });
-        }
-
-        async function callGeminiApi(prompt, feature) {
-            const loader = document.getElementById(`${feature}-loader`);
-            const outputContainer = document.getElementById(`${feature}-container`);
-            const outputElement = document.getElementById(`${feature}-output`);
-            const promptContainer = document.getElementById(`${feature}-prompt`);
-
-            promptContainer.classList.add('hidden');
-            outputContainer.classList.remove('hidden');
-            loader.classList.remove('hidden');
-            if (feature === 'gemini-email') { outputElement.value = ''; } else { outputElement.innerHTML = ''; }
-
-            try {
-                const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-                const payload = { contents: chatHistory };
-                const apiKey = ""; 
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-                
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    throw new Error(`API error: ${response.statusText}`);
+        function populateContactForm() {
+            const container = document.getElementById('hidden-data-container');
+            container.innerHTML = '';
+            let summary = `Client Financial Snapshot:\n========================\n`;
+            for (const key in userFinancialData) {
+                let value = userFinancialData[key];
+                if (typeof value === 'number' && key !== 'age' && key !== 'spouseAge' && key !== 'dependents' && key !== 'incomeYears') {
+                    value = currencyFormatter.format(value);
                 }
-
-                const result = await response.json();
-                
-                let text = 'Sorry, I could not retrieve the insights at this moment.';
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    text = result.candidates[0].content.parts[0].text;
-                }
-                
-                if (feature === 'gemini-email') {
-                    outputElement.value = text;
-                } else {
-                    outputElement.innerHTML = text;
-                }
-
-            } catch (error) {
-                console.error("Gemini API call failed:", error);
-                outputElement.innerHTML = 'There was an error generating the response. Please try again later.';
-            } finally {
-                loader.classList.add('hidden');
+                summary += `${key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}: ${value}\n`;
             }
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'financial_summary';
+            input.value = summary;
+            container.appendChild(input);
         }
     </script>
 </body>
