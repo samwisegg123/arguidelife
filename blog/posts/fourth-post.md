@@ -16,6 +16,48 @@ Let’s use a simple analogy. Imagine your cash value is a **sailboat tied to a 
 
 So, an IUL gives you the potential to capture some of the market's upside, while protecting you from the downside.
 
+---
+
+<div class="bg-slate-100 p-6 rounded-lg my-8">
+    <h3 class="text-xl font-bold text-center text-slate-800 mb-6">How an IUL Responds to the Market</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+        <!-- Scenario 1: Market Down -->
+        <div class="bg-white p-4 rounded-lg shadow">
+            <p class="font-semibold text-red-600">Market Down</p>
+            <div class="relative h-24 mt-4">
+                <div class="absolute bottom-8 w-full border-b-2 border-slate-400"></div>
+                <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-3xl">⛵</div>
+                <p class="absolute bottom-0 w-full text-xs font-semibold text-slate-500">0% Floor</p>
+            </div>
+            <p class="text-sm mt-2">Market: <span class="font-bold">-5%</span><br>Your Value: <span class="font-bold">0% (Protected)</span></p>
+        </div>
+        <!-- Scenario 2: Market Up (Within Cap) -->
+        <div class="bg-white p-4 rounded-lg shadow">
+            <p class="font-semibold text-green-600">Market Up</p>
+            <div class="relative h-24 mt-4">
+                 <div class="absolute bottom-8 w-full border-b-2 border-slate-400"></div>
+                 <div class="absolute bottom-16 left-1/2 -translate-x-1/2 text-3xl">⛵</div>
+                 <p class="absolute bottom-0 w-full text-xs font-semibold text-slate-500">0% Floor</p>
+            </div>
+            <p class="text-sm mt-2">Market: <span class="font-bold">+8%</span><br>Your Value: <span class="font-bold">+8% (Gain Captured)</span></p>
+        </div>
+        <!-- Scenario 3: Market Up (Exceeds Cap) -->
+        <div class="bg-white p-4 rounded-lg shadow">
+            <p class="font-semibold text-green-600">Market Up (High)</p>
+            <div class="relative h-24 mt-4">
+                 <div class="absolute top-0 w-full border-b-2 border-dashed border-sky-500"></div>
+                 <p class="absolute top-0 w-full text-xs font-semibold text-sky-600">10% Cap</p>
+                 <div class="absolute top-1 left-1/2 -translate-x-1/2 text-3xl">⛵</div>
+                 <div class="absolute bottom-8 w-full border-b-2 border-slate-400"></div>
+                 <p class="absolute bottom-0 w-full text-xs font-semibold text-slate-500">0% Floor</p>
+            </div>
+            <p class="text-sm mt-2">Market: <span class="font-bold">+15%</span><br>Your Value: <span class="font-bold">+10% (Limited by Cap)</span></p>
+        </div>
+    </div>
+</div>
+
+---
+
 ### Why Is Everyone Talking About It? The Potential Benefits ✅
 
 IULs have become popular because they offer a unique combination of features:
