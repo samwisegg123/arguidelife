@@ -58,6 +58,7 @@
                 <li><a href="#about" class="hover:text-sky-600 transition-colors">My Why</a></li>
                 <li><a href="#education" class="hover:text-sky-600 transition-colors">The Basics</a></li>
                 <li><a href="#checkup" class="hover:text-sky-600 transition-colors">Needs Checkup</a></li>
+                <li><a href="/blog.html" class="hover:text-sky-600 transition-colors">Blog</a></li>
                 <li><a href="#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">Request a Consultation</a></li>
             </ul>
             <button id="mobile-menu-btn" class="md:hidden text-slate-800">
@@ -69,6 +70,7 @@
             <a href="#about" class="block py-2 px-4 text-sm text-slate-600 hover:bg-slate-100">My Why</a>
             <a href="#education" class="block py-2 px-4 text-sm text-slate-600 hover:bg-slate-100">The Basics</a>
             <a href="#checkup" class="block py-2 px-4 text-sm text-slate-600 hover:bg-slate-100">Needs Checkup</a>
+            <a href="/blog.html" class="block py-2 px-4 text-sm text-slate-600 hover:bg-slate-100">Blog</a>
             <a href="#contact" class="block py-2 px-4 text-sm text-slate-600 hover:bg-slate-100">Request a Consultation</a>
         </div>
     </header>
@@ -189,9 +191,9 @@
             <div class="text-center max-w-3xl mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Prepare for Our Strategy Session</h2>
                 <p class="text-lg text-slate-600 mt-4">This AI-powered prompt is designed to help you explore different strategies and prepare questions, so our one-on-one conversation is as productive as possible.</p>
-                <div class="mt-8 text-left bg-slate-800 text-slate-200 p-6 rounded-lg font-mono text-sm shadow-lg">
+                <div class="mt-8 text-left bg-slate-800 text-slate-200 p-6 rounded-lg shadow-lg">
                     <p class="mb-4 text-slate-400">// Copy the prompt below and use it with your favorite AI</p>
-                    <pre><code id="ai-prompt-code">Act as a sophisticated financial strategy simulator and educator.
+                    <textarea id="ai-prompt-code" readonly class="w-full h-64 bg-slate-900 text-slate-300 font-mono text-sm p-4 rounded-md border-slate-700 focus:ring-sky-500 focus:border-sky-500">Act as a sophisticated financial strategy simulator and educator.
 
 Based on the DIME and FIN analysis from the ARGUIDE tool, my estimated life insurance need is [Enter Your Result Above]. My primary goals are to cover a mortgage, replace income for my family, and fund college.
 
@@ -201,7 +203,7 @@ To help me prepare for my strategy session with my licensed agent at ARGUIDE, pl
 
 2. **Strategy B (Hybrid Growth & Protection Focus):** Describe a blended strategy that not only covers my temporary needs but also includes a component for lifelong protection and potential tax-advantaged cash value growth. Explain how policies like Whole Life or Indexed Universal Life (IUL) could fit into this strategy and what their primary purpose would be.
 
-3. **Key Questions for My Agent:** Based on these two strategies, generate a list of 5 critical questions I should ask my agent to help me decide which path is right for my specific financial situation and risk tolerance.</code></pre>
+3. **Key Questions for My Agent:** Based on these two strategies, generate a list of 5 critical questions I should ask my agent to help me decide which path is right for my specific financial situation and risk tolerance.</textarea>
                     <button id="copy-prompt-btn" class="mt-4 bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-lg text-sm">Copy Prompt</button>
                     <span id="copy-prompt-success" class="text-green-400 ml-2 hidden">Copied!</span>
                 </div>
@@ -268,8 +270,10 @@ To help me prepare for my strategy session with my licensed agent at ARGUIDE, pl
         // --- COPY PROMPT BUTTON ---
         const copyPromptBtn = document.getElementById('copy-prompt-btn');
         copyPromptBtn.addEventListener('click', () => {
-            const aiPromptCode = document.getElementById('ai-prompt-code').innerText;
-            navigator.clipboard.writeText(aiPromptCode).then(() => {
+            const aiPromptCode = document.getElementById('ai-prompt-code');
+            aiPromptCode.select();
+            aiPromptCode.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(aiPromptCode.value).then(() => {
                 const successMsg = document.getElementById('copy-prompt-success');
                 copyPromptBtn.innerText = 'Copied!';
                 successMsg.classList.remove('hidden');
@@ -328,7 +332,7 @@ To help me prepare for my strategy session with my licensed agent at ARGUIDE, pl
         }
 
         function getSuggestedStrategy(data) {
-            const permanentNeedRatio = (data.finalExpenses + (data.annualIncome * 0.1)) / data.totalNeeds;
+            const permanentNeedRatio = (data.finalExpenses + (data.annualIncome * 0.1)) / (data.totalNeeds || 1);
             let strategy = {
                 title: "Potential Strategy to Discuss: Term Insurance Focus",
                 description: "Your primary goals appear to be covering large, temporary expenses like your mortgage and replacing income for a set number of years. A common and cost-effective approach for these goals is often a Term Life policy.",
@@ -389,7 +393,7 @@ To help me prepare for my strategy session with my licensed agent at ARGUIDE, pl
             
             const aiPromptElement = document.getElementById('ai-prompt-code');
             if (aiPromptElement) {
-                aiPromptElement.innerText = aiPromptElement.innerText.replace('[Enter Your Result Above]', currencyFormatter.format(userFinancialData.netNeed));
+                aiPromptElement.value = aiPromptElement.value.replace('[Enter Your Result Above]', currencyFormatter.format(userFinancialData.netNeed));
             }
 
             const chartData = {
