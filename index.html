@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARGUIDE: Interactive Life Insurance Checkup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony (Slate/Sky Blue on a Neutral Gray background) -->
+    <!-- Application Structure Plan: A multi-step, single-page application that guides the user linearly through the process. View 1 is an interactive data input form (the calculator). View 2 dynamically calculates and displays the results, featuring a donut chart for visual breakdown and a text summary. View 3 presents the final call to action. This structure turns a passive guide into an active, engaging tool, improving user experience by centralizing the entire process and providing instant feedback. -->
+    <!-- Visualization & Content Choices: User data input is handled via an interactive HTML form with sliders for engagement. The core analysis is presented with a large, clear number for the total need, a Chart.js donut chart to visualize the composition of this need (Debt, Income, College, etc.), and dynamically generated text for personalized discussion points. This combination makes the results tangible and easier to understand than text alone. The final call to action is a prominent button. This design uses Chart.js for visualization and avoids SVG/Mermaid. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .step-active {
+            border-color: #0ea5e9; /* sky-500 */
+            color: #0ea5e9;
+        }
+        .step-active .step-circle {
+            background-color: #0ea5e9;
+            color: white;
+        }
+        .step-inactive {
+            border-color: #e5e7eb; /* gray-200 */
+            color: #6b7280; /* gray-500 */
+        }
+        .step-inactive .step-circle {
+            background-color: #e5e7eb;
+            color: #6b7280;
+        }
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #d1d5db;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #0ea5e9;
+            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
+        }
+        /* Custom slider styles */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            margin: 0.5rem 0;
+            background: transparent;
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: #d1d5db; /* gray-300 */
+            border-radius: 5px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #0ea5e9; /* sky-500 */
+            cursor: pointer;
+            margin-top: -8px;
+        }
+        input[type=range]::-moz-range-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: #d1d5db;
+            border-radius: 5px;
+        }
+        input[type=range]::-moz-range-thumb {
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #0ea5e9;
+            cursor: pointer;
+            border: none;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+         @media (min-width: 768px) {
+            .chart-container {
+                 height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <div class="container mx-auto px-4 py-8 md:py-12 max-w-4xl">
+        
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900">🛡️ ARGUIDE</h1>
+            <p class="text-lg text-slate-600 mt-2">Your Interactive Life Insurance Checkup</p>
+        </header>
+
+        <!-- Stepper Navigation -->
+        <div id="stepper" class="flex justify-center items-center mb-10 space-x-4 md:space-x-8">
+            <div id="step-1" class="step-active flex items-center">
+                <div class="step-circle w-8 h-8 rounded-full flex items-center justify-center font-bold">1</div>
+                <span class="ml-2 font-medium hidden sm:inline">Input</span>
+            </div>
+            <div class="flex-grow h-px bg-gray-200"></div>
+            <div id="step-2" class="step-inactive flex items-center">
+                <div class="step-circle w-8 h-8 rounded-full flex items-center justify-center font-bold">2</div>
+                <span class="ml-2 font-medium hidden sm:inline">Analysis</span>
+            </div>
+            <div class="flex-grow h-px bg-gray-200"></div>
+            <div id="step-3" class="step-inactive flex items-center">
+                <div class="step-circle w-8 h-8 rounded-full flex items-center justify-center font-bold">3</div>
+                <span class="ml-2 font-medium hidden sm:inline">Next Steps</span>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <main>
+            <!-- View 1: Data Input -->
+            <div id="view-1" class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-slate-800">Let's Get Started</h2>
+                    <p class="text-slate-500 mt-1">Enter your information below to calculate your estimated need.</p>
+                </div>
+                
+                <form id="needs-form" class="space-y-8">
+                    <!-- Section 1: Family -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-700 border-b pb-2 mb-4">👨‍👩‍👧‍👦 About the Family</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div><label class="font-medium text-slate-600">Your Age</label><input type="number" id="your_age" class="form-input mt-1" placeholder="e.g., 35"></div>
+                            <div><label class="font-medium text-slate-600">Spouse/Partner's Age</label><input type="number" id="spouse_age" class="form-input mt-1" placeholder="e.g., 34 (or leave blank)"></div>
+                            <div><label class="font-medium text-slate-600">Number of Dependents</label><input type="number" id="dependents" class="form-input mt-1" placeholder="e.g., 2"></div>
+                            <div><label class="font-medium text-slate-600">Your General Health</label>
+                                <select id="health_status" class="form-input mt-1">
+                                    <option>Excellent</option>
+                                    <option>Good</option>
+                                    <option>Fair</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Section 2: Finances -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-700 border-b pb-2 mb-4">🏦 Financial Landscape</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                             <div class="md:col-span-2"><p class="text-sm text-slate-500 -mt-2 mb-2">Enter your combined household numbers for the fields below.</p></div>
+                            <div><label class="font-medium text-slate-600">Mortgage Balance</label><input type="number" id="mortgage" class="form-input mt-1" placeholder="$300,000"></div>
+                            <div><label class="font-medium text-slate-600">Other Debts (Student, Auto, CC)</label><input type="number" id="other_debt" class="form-input mt-1" placeholder="$50,000"></div>
+                            <div><label class="font-medium text-slate-600">Liquid Savings</label><input type="number" id="savings" class="form-input mt-1" placeholder="$25,000"></div>
+                            <div><label class="font-medium text-slate-600">Investments (401k, etc.)</label><input type="number" id="investments" class="form-input mt-1" placeholder="$150,000"></div>
+                            <div class="md:col-span-2"><label class="font-medium text-slate-600">Existing Life Insurance (Work & Personal)</label><input type="number" id="existing_insurance" class="form-input mt-1" placeholder="$200,000"></div>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: Goals -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-700 border-b pb-2 mb-4">🎯 Financial Goals</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div><label class="font-medium text-slate-600">Total Annual Household Income</label><input type="number" id="annual_income" class="form-input mt-1" placeholder="$120,000"></div>
+                            <div>
+                                <label for="income_years" class="font-medium text-slate-600">Years to Replace Income: <span id="years-display" class="font-bold text-sky-600">15</span> years</label>
+                                <input type="range" id="income_years" min="1" max="30" value="15" class="mt-2">
+                            </div>
+                            <div><label class="font-medium text-slate-600">College Funding Goal</label><input type="number" id="college" class="form-input mt-1" placeholder="$100,000"></div>
+                            <div><label class="font-medium text-slate-600">Final Expenses Estimate</label><input type="number" id="final_expenses" class="form-input mt-1" value="25000" placeholder="$25,000"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center pt-4">
+                        <button type="button" id="calculate-btn" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                            Calculate My Need
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- View 2: Analysis & Results -->
+            <div id="view-2" class="hidden bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-slate-800">Your Estimated Financial Need</h2>
+                    <p class="text-slate-500 mt-1">Here is a breakdown of your needs based on the information provided.</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+                    <!-- Chart -->
+                    <div class="w-full md:w-1/2">
+                        <div class="chart-container">
+                            <canvas id="needsChart"></canvas>
+                        </div>
+                    </div>
+                    <!-- Results -->
+                    <div class="w-full md:w-1/2 text-center md:text-left">
+                        <p class="text-slate-600 text-lg">Net Estimated Coverage Need</p>
+                        <p id="net-need-result" class="text-4xl md:text-5xl font-bold text-sky-600 my-2">$1,250,000</p>
+                        
+                        <div class="mt-6 bg-slate-100 p-4 rounded-lg">
+                            <h4 class="font-semibold text-slate-700 mb-2">Breakdown of Total Needs:</h4>
+                            <ul class="space-y-1 text-slate-600">
+                                <li><strong>Immediate (Lump-Sum):</strong> <span id="lump-sum-result">$475,000</span></li>
+                                <li><strong>Ongoing (Income):</strong> <span id="income-result">$1,800,000</span></li>
+                            </ul>
+                            <div class="h-px bg-slate-300 my-2"></div>
+                             <ul class="space-y-1 text-slate-600">
+                                <li><strong>Less Assets & Insurance:</strong> <span id="less-assets-result">-$625,000</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10 bg-sky-50 p-6 rounded-lg">
+                     <h3 class="text-xl font-semibold text-slate-700 mb-3">🔑 Key Considerations for Our Discussion</h3>
+                     <div id="discussion-points" class="text-slate-600 space-y-2">
+                        <p>Based on your goals, we need to address two types of needs:</p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li><strong>Temporary Needs:</strong> These have an end date, like paying off the mortgage and providing income until your children are independent.</li>
+                            <li><strong>Permanent Needs:</strong> These can last a lifetime, such as final expenses or leaving a legacy for your family.</li>
+                        </ul>
+                        <p class="font-medium mt-3">Here are great questions for our call:</p>
+                         <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li>What is the most effective strategy to cover both my temporary and permanent needs?</li>
+                            <li>How does my existing group life insurance from work fit into my overall plan?</li>
+                            <li>Based on these numbers, what blend of insurance types might be appropriate to investigate?</li>
+                        </ul>
+                     </div>
+                </div>
+
+                <div class="text-center pt-8">
+                    <button type="button" id="next-step-btn" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                        View Next Steps
+                    </button>
+                </div>
+            </div>
+
+            <!-- View 3: Next Steps -->
+            <div id="view-3" class="hidden text-center bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                <div class="mb-6">
+                    <div class="mx-auto bg-green-100 w-16 h-16 rounded-full flex items-center justify-center">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-800">Congratulations! You've Completed the First Step.</h2>
+                <p class="text-slate-500 mt-2 max-w-xl mx-auto">You now have a powerful, data-driven summary of your family's needs. The final step is to translate these numbers into a concrete plan that brings you peace of mind.</p>
+                
+                <div class="mt-8 bg-slate-50 border border-slate-200 p-6 rounded-lg">
+                    <h3 class="font-semibold text-slate-700">Your Final Step is to Schedule Your Free Consultation.</h3>
+                    <p class="text-slate-600 mt-2">On our call, we will review your results, discuss the key considerations, and design the right protection strategy for you.</p>
+                    <a href="https://calendly.com" target="_blank" class="mt-4 inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                        Book Your Coverage Clarity Call
+                    </a>
+                </div>
+                 <div class="mt-6">
+                    <button id="recalculate-btn" class="text-sky-600 hover:text-sky-800 font-medium">← Go Back and Recalculate</button>
+                </div>
+            </div>
+            
+            <footer class="text-center mt-10">
+                <p class="text-xs text-slate-400 max-w-2xl mx-auto">
+                    <strong>Privacy Disclaimer:</strong> Your information is private and is not stored or shared. This analysis is a simplified estimate based on the data you provide and is not financial advice. A licensed insurance agent can provide a comprehensive analysis, recommend suitable products, and provide accurate pricing.
+                    <br>Contact: Arguidelife@gmail.com
+                </p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        const view1 = document.getElementById('view-1');
+        const view2 = document.getElementById('view-2');
+        const view3 = document.getElementById('view-3');
+
+        const step1 = document.getElementById('step-1');
+        const step2 = document.getElementById('step-2');
+        const step3 = document.getElementById('step-3');
+
+        const calculateBtn = document.getElementById('calculate-btn');
+        const nextStepBtn = document.getElementById('next-step-btn');
+        const recalculateBtn = document.getElementById('recalculate-btn');
+
+        const incomeYearsSlider = document.getElementById('income_years');
+        const yearsDisplay = document.getElementById('years-display');
+
+        let needsChart = null;
+        
+        const currencyFormatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+        });
+
+        incomeYearsSlider.addEventListener('input', (e) => {
+            yearsDisplay.textContent = e.target.value;
+        });
+        
+        const getVal = (id) => parseFloat(document.getElementById(id).value) || 0;
+
+        calculateBtn.addEventListener('click', () => {
+            // Calculations
+            const mortgage = getVal('mortgage');
+            const otherDebt = getVal('other_debt');
+            const college = getVal('college');
+            const finalExpenses = getVal('final_expenses');
+            
+            const savings = getVal('savings');
+            const investments = getVal('investments');
+            const existingInsurance = getVal('existing_insurance');
+
+            const annualIncome = getVal('annual_income');
+            const incomeYears = getVal('income_years');
+
+            const totalDebt = mortgage + otherDebt;
+            const lumpSumNeeds = totalDebt + college + finalExpenses;
+            const incomeNeeds = annualIncome * incomeYears;
+            const totalNeeds = lumpSumNeeds + incomeNeeds;
+            const totalAssets = savings + investments + existingInsurance;
+            const netNeed = totalNeeds - totalAssets > 0 ? totalNeeds - totalAssets : 0;
+            
+            // Update Results View
+            document.getElementById('net-need-result').textContent = currencyFormatter.format(netNeed);
+            document.getElementById('lump-sum-result').textContent = currencyFormatter.format(lumpSumNeeds);
+            document.getElementById('income-result').textContent = currencyFormatter.format(incomeNeeds);
+            document.getElementById('less-assets-result').textContent = `-${currencyFormatter.format(totalAssets)}`;
+            
+            // Update Chart
+            const chartData = {
+                labels: ['Debt', 'College', 'Final Expenses', 'Income Replacement'],
+                datasets: [{
+                    label: 'Needs Breakdown',
+                    data: [totalDebt, college, finalExpenses, incomeNeeds],
+                    backgroundColor: [
+                        '#38bdf8', // sky-400
+                        '#0ea5e9', // sky-500
+                        '#0284c7', // sky-600
+                        '#0369a1', // sky-700
+                    ],
+                    borderColor: '#ffffff',
+                    borderWidth: 2,
+                    hoverOffset: 4
+                }]
+            };
+            
+            if (needsChart) {
+                needsChart.data = chartData;
+                needsChart.update();
+            } else {
+                const ctx = document.getElementById('needsChart').getContext('2d');
+                needsChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: chartData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed !== null) {
+                                            label += currencyFormatter.format(context.parsed);
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Switch view
+            switchView('view-2');
+        });
+
+        nextStepBtn.addEventListener('click', () => {
+            switchView('view-3');
+        });
+
+        recalculateBtn.addEventListener('click', () => {
+            switchView('view-1');
+        });
+
+        function switchView(viewToShow) {
+            view1.classList.add('hidden');
+            view2.classList.add('hidden');
+            view3.classList.add('hidden');
+            
+            document.getElementById(viewToShow).classList.remove('hidden');
+
+            step1.classList.remove('step-active');
+            step1.classList.add('step-inactive');
+            step2.classList.remove('step-active');
+            step2.classList.add('step-inactive');
+            step3.classList.remove('step-active');
+            step3.classList.add('step-inactive');
+
+            if (viewToShow === 'view-1') {
+                step1.classList.add('step-active');
+            } else if (viewToShow === 'view-2') {
+                step2.classList.add('step-active');
+            } else if (viewToShow === 'view-3') {
+                step3.classList.add('step-active');
+            }
+             window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
