@@ -1,4 +1,3 @@
-<!-- FILE: netlify.toml (Replace your existing file with this updated version) -->
 [build]
   publish = "/"
 
