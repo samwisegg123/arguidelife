@@ -46,6 +46,10 @@
         .form-input:focus { outline: none; border-color: #0ea5e9; box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2); }
         .chart-container { position: relative; width: 100%; max-width: 400px; margin-left: auto; margin-right: auto; height: 300px; max-height: 400px; }
         @media (min-width: 768px) { .chart-container { height: 400px; } }
+        input[type=range] { -webkit-appearance: none; width: 100%; margin: 0.5rem 0; background: transparent; }
+        input[type=range]:focus { outline: none; }
+        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 8px; cursor: pointer; background: #d1d5db; border-radius: 5px; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%; background: #0ea5e9; cursor: pointer; margin-top: -8px; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -130,9 +134,9 @@
                     <div>
                         <h3 class="text-xl font-semibold text-slate-700 border-b pb-2 mb-4">👨‍👩‍👧‍👦 About the Family</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div><label class="font-medium text-slate-600">Your Age</label><input type="number" id="your_age" class="form-input mt-1" placeholder="e.g., 35" min="18" max="100"></div>
-                            <div><label class="font-medium text-slate-600">Spouse/Partner's Age (Optional)</label><input type="number" id="spouse_age" class="form-input mt-1" placeholder="e.g., 34" min="18" max="100"></div>
-                            <div><label class="font-medium text-slate-600">Number of Dependents</label><input type="number" id="dependents" class="form-input mt-1" placeholder="e.g., 2" min="0"></div>
+                            <div><label class="font-medium text-slate-600">Your Age</label><input type="text" inputmode="numeric" id="your_age" class="form-input mt-1" placeholder="e.g., 35" min="18" max="100"></div>
+                            <div><label class="font-medium text-slate-600">Spouse/Partner's Age (Optional)</label><input type="text" inputmode="numeric" id="spouse_age" class="form-input mt-1" placeholder="e.g., 34" min="18" max="100"></div>
+                            <div><label class="font-medium text-slate-600">Number of Dependents</label><input type="text" inputmode="numeric" id="dependents" class="form-input mt-1" placeholder="e.g., 2" min="0"></div>
                             <div><label class="font-medium text-slate-600" for="health_status">General Health</label>
                                 <select id="health_status" class="form-input mt-1">
                                     <option value="excellent">Excellent</option>
@@ -145,24 +149,23 @@
                     <div>
                         <h3 class="text-xl font-semibold text-slate-700 border-b pb-2 mb-4">🏦 Financial Landscape</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div><label class="font-medium text-slate-600">Mortgage Balance</label><input type="number" id="mortgage" class="form-input mt-1" placeholder="$300,000" min="0"></div>
-                            <div><label class="font-medium text-slate-600">Other Debts (Student, Auto, CC)</label><input type="number" id="other_debt" class="form-input mt-1" placeholder="$50,000" min="0"></div>
-                            <div><label class="font-medium text-slate-600">Liquid Savings</label><input type="number" id="savings" class="form-input mt-1" placeholder="$25,000" min="0"></div>
-                            <div><label class="font-medium text-slate-600">Investments (401k, etc.)</label><input type="number" id="investments" class="form-input mt-1" placeholder="$150,000" min="0"></div>
-                            <div class="md:col-span-2"><label class="font-medium text-slate-600">Existing Life Insurance</label><input type="number" id="existing_insurance" class="form-input mt-1" placeholder="$200,000" min="0"></div>
+                            <div><label class="font-medium text-slate-600">Mortgage Balance</label><input type="text" inputmode="numeric" id="mortgage" class="form-input mt-1" placeholder="$300,000" min="0"></div>
+                            <div><label class="font-medium text-slate-600">Other Debts (Student, Auto, CC)</label><input type="text" inputmode="numeric" id="other_debt" class="form-input mt-1" placeholder="$50,000" min="0"></div>
+                            <div><label class="font-medium text-slate-600">Liquid Savings</label><input type="text" inputmode="numeric" id="savings" class="form-input mt-1" placeholder="$25,000" min="0"></div>
+                            <div><label class="font-medium text-slate-600">Investments (401k, etc.)</label><input type="text" inputmode="numeric" id="investments" class="form-input mt-1" placeholder="$150,000" min="0"></div>
+                            <div class="md:col-span-2"><label class="font-medium text-slate-600">Existing Life Insurance</label><input type="text" inputmode="numeric" id="existing_insurance" class="form-input mt-1" placeholder="$200,000" min="0"></div>
                         </div>
                     </div>
                     <div>
                         <h3 class="text-xl font-semibold text-slate-700 border-b pb-2 mb-4">🎯 Financial Goals</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div><label class="font-medium text-slate-600">Total Annual Household Income</label><input type="number" id="annual_income" class="form-input mt-1" placeholder="$120,000" min="0"></div>
+                            <div><label class="font-medium text-slate-600">Total Annual Household Income</label><input type="text" inputmode="numeric" id="annual_income" class="form-input mt-1" placeholder="$120,000" min="0"></div>
                             <div>
-                                <label for="income_years" class="font-medium text-slate-600">Years to Replace Income</label>
-                                <input type="number" id="income_years" class="form-input mt-1" value="15" placeholder="e.g., 20">
-                                <p class="text-xs text-slate-500 mt-1">How long will your dependents need support? (e.g., until kids are 18 or 25)</p>
+                                <label for="income_years" class="font-medium text-slate-600">Years to Replace Income: <span id="years-display" class="font-bold text-sky-600">15</span> years</label>
+                                <input type="range" id="income_years" min="1" max="30" value="15" class="mt-2">
                             </div>
-                            <div><label class="font-medium text-slate-600">College Funding Goal</label><input type="number" id="college" class="form-input mt-1" placeholder="$100,000" min="0"></div>
-                            <div><label class="font-medium text-slate-600">Final Expenses Estimate</label><input type="number" id="final_expenses" class="form-input mt-1" value="25000" placeholder="$25,000" min="0"></div>
+                            <div><label class="font-medium text-slate-600">College Funding Goal</label><input type="text" inputmode="numeric" id="college" class="form-input mt-1" placeholder="$100,000" min="0"></div>
+                            <div><label class="font-medium text-slate-600">Final Expenses Estimate</label><input type="text" inputmode="numeric" id="final_expenses" class="form-input mt-1" value="25,000" placeholder="$25,000" min="0"></div>
                         </div>
                     </div>
                     <div class="text-center pt-4">
@@ -177,97 +180,101 @@
 
         <!-- CARRIERS SECTION -->
         <section id="carriers" class="py-16 md:py-24 bg-white rounded-xl shadow-lg">
-             <div class="text-center max-w-4xl mx-auto px-6">
+             <div class="text-center max-w-5xl mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Your Advocate in the Market</h2>
                 <p class="text-lg text-slate-600 mt-4">As an independent agent, I work for you, not the insurance companies. This freedom allows me to access a wide marketplace of over 20 top-rated carriers to find the best policy and pricing for your unique situation.</p>
-                <div class="mt-12 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8 items-center">
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/aetna.com" alt="Aetna Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">Aetna</div>
+                <div class="mt-12 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-y-10 gap-x-6 items-center">
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/aetna.com" alt="Aetna Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>Aetna</p>'">
+                        <p class="text-xs text-slate-500 mt-2">Aetna</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/aflac.com" alt="Aflac Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">Aflac</div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/aflac.com" alt="Aflac Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>Aflac</p>'">
+                        <p class="text-xs text-slate-500 mt-2">Aflac</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/americanamicable.com" alt="American Amicable Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">American Amicable</div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/americanamicable.com" alt="American Amicable Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>American Amicable</p>'">
+                        <p class="text-xs text-slate-500 mt-2">American Amicable</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/americo.com" alt="Americo Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">Americo</div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/americo.com" alt="Americo Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>Americo</p>'">
+                        <p class="text-xs text-slate-500 mt-2">Americo</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/ameritas.com" alt="Ameritas Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">Ameritas</div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/ameritas.com" alt="Ameritas Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>Ameritas</p>'">
+                        <p class="text-xs text-slate-500 mt-2">Ameritas</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/baltimorelife.com" alt="Baltimore Life Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">Baltimore Life</div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/baltimorelife.com" alt="Baltimore Life Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>Baltimore Life</p>'">
+                        <p class="text-xs text-slate-500 mt-2">Baltimore Life</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/cfl.org" alt="Catholic Financial Life Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">Catholic Financial Life</div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/cfl.org" alt="Catholic Financial Life Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>Catholic Financial</p>'">
+                        <p class="text-xs text-slate-500 mt-2">Catholic Financial</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/combinedinsurance.com" alt="Combined Insurance Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">Combined Insurance</div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/combinedinsurance.com" alt="Combined Insurance Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>Combined</p>'">
+                        <p class="text-xs text-slate-500 mt-2">Combined</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/corebridgefinancial.com" alt="Corebridge Financial Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">Corebridge Financial</div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/corebridgefinancial.com" alt="Corebridge Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>Corebridge</p>'">
+                        <p class="text-xs text-slate-500 mt-2">Corebridge</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/ethoslife.com" alt="Ethos Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">Ethos</div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/ethoslife.com" alt="Ethos Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>Ethos</p>'">
+                        <p class="text-xs text-slate-500 mt-2">Ethos</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/fidelitylife.com" alt="Fidelity Life Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">Fidelity Life</div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/fidelitylife.com" alt="Fidelity Life Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>Fidelity Life</p>'">
+                        <p class="text-xs text-slate-500 mt-2">Fidelity Life</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/gerberlife.com" alt="Gerber Life Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">Gerber Life</div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/gerberlife.com" alt="Gerber Life Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>Gerber Life</p>'">
+                        <p class="text-xs text-slate-500 mt-2">Gerber Life</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/illinoismutual.com" alt="Illinois Mutual Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">Illinois Mutual</div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/illinoismutual.com" alt="Illinois Mutual Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>Illinois Mutual</p>'">
+                        <p class="text-xs text-slate-500 mt-2">Illinois Mutual</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/kclife.com" alt="Kansas City Life Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">Kansas City Life</div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/kclife.com" alt="Kansas City Life Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>Kansas City Life</p>'">
+                        <p class="text-xs text-slate-500 mt-2">Kansas City Life</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/ladderlife.com" alt="Ladder Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">Ladder</div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/ladderlife.com" alt="Ladder Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>Ladder</p>'">
+                        <p class="text-xs text-slate-500 mt-2">Ladder</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/lcbalife.org" alt="LCBA Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">LCBA</div>
+                    <div class="text-center">
+                        <p class='h-10 flex items-center justify-center font-semibold text-slate-600'>LCBA</p>
+                        <p class="text-xs text-slate-500 mt-2">LCBA</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/manhattanlife.com" alt="Manhattan Life Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">Manhattan Life</div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/manhattanlife.com" alt="Manhattan Life Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>Manhattan Life</p>'">
+                        <p class="text-xs text-slate-500 mt-2">Manhattan Life</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/mutualofomaha.com" alt="Mutual of Omaha Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">Mutual of Omaha</div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/mutualofomaha.com" alt="Mutual of Omaha Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>Mutual of Omaha</p>'">
+                        <p class="text-xs text-slate-500 mt-2">Mutual of Omaha</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/nationallife.com" alt="National Life Group Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">National Life Group</div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/nationallife.com" alt="National Life Group Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>National Life Group</p>'">
+                        <p class="text-xs text-slate-500 mt-2">National Life Group</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/royalarcanum.com" alt="Royal Arcanum Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">Royal Arcanum</div>
+                     <div class="text-center">
+                        <p class='h-10 flex items-center justify-center font-semibold text-slate-600'>Reagan AI</p>
+                        <p class="text-xs text-slate-500 mt-2">Reagan AI</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/sbli.com" alt="SBLI Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">SBLI</div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/royalarcanum.com" alt="Royal Arcanum Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>Royal Arcanum</p>'">
+                        <p class="text-xs text-slate-500 mt-2">Royal Arcanum</p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <img src="https://logo.clearbit.com/uhlcompany.com" alt="United Home Life Logo" class="h-8 mx-auto filter grayscale hover:grayscale-0 transition duration-300" onerror="this.style.display='none'">
-                        <div class="mt-2 text-xs text-slate-600 font-medium">United Home Life</div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/sbli.com" alt="SBLI Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>SBLI</p>'">
+                        <p class="text-xs text-slate-500 mt-2">SBLI</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://logo.clearbit.com/uhlcompany.com" alt="United Home Life Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>United Home Life</p>'">
+                        <p class="text-xs text-slate-500 mt-2">United Home Life</p>
                     </div>
                 </div>
             </div>
@@ -377,6 +384,8 @@ To help me prepare for my strategy session with my licensed agent at ARGUIDE, pl
         const view1 = document.getElementById('view-1');
         const resultsContainer = document.getElementById('results-container');
         const calculateBtn = document.getElementById('calculate-btn');
+        const incomeYearsSlider = document.getElementById('income_years');
+        const yearsDisplay = document.getElementById('years-display');
         
         let needsChart = null;
         let userFinancialData = {};
@@ -385,21 +394,47 @@ To help me prepare for my strategy session with my licensed agent at ARGUIDE, pl
             style: 'currency', currency: 'USD',
             minimumFractionDigits: 0, maximumFractionDigits: 0,
         });
+
+        const numberInputs = document.querySelectorAll('input[inputmode="numeric"]');
+        numberInputs.forEach(input => {
+            input.addEventListener('keyup', (e) => {
+                formatNumber(e.target);
+            });
+            input.addEventListener('input', (e) => {
+                e.target.value = e.target.value.replace(/[^0-9]/g, '');
+            });
+        });
         
-        const getVal = (id) => parseFloat(document.getElementById(id).value) || 0;
+        function formatNumber(input) {
+            let value = input.value.replace(/,/g, '');
+            if (!isNaN(value) && value.length > 0) {
+                let formattedValue = new Intl.NumberFormat('en-US').format(value);
+                input.value = formattedValue;
+            }
+        }
+        
+        function getRawVal(id) {
+            const input = document.getElementById(id);
+            return parseFloat(input.value.replace(/,/g, '')) || 0;
+        }
+
+        incomeYearsSlider.addEventListener('input', (e) => {
+            yearsDisplay.textContent = e.target.value;
+        });
+        
         const getStr = (id) => document.getElementById(id).value || 'N/A';
 
         calculateBtn.addEventListener('click', () => {
-            const age = getVal('your_age');
+            const age = getRawVal('your_age');
             if (age < 18) {
                 alert('Please enter an age of 18 or older.');
                 return;
             }
             userFinancialData = {
-                age: age, spouseAge: getVal('spouse_age'), health: getStr('health_status'), dependents: getVal('dependents'),
-                mortgage: getVal('mortgage'), otherDebt: getVal('other_debt'), college: getVal('college'),
-                finalExpenses: getVal('final_expenses'), savings: getVal('savings'), investments: getVal('investments'),
-                existingInsurance: getVal('existing_insurance'), annualIncome: getVal('annual_income'), incomeYears: getVal('income_years'),
+                age: age, spouseAge: getRawVal('spouse_age'), health: getStr('health_status'), dependents: getRawVal('dependents'),
+                mortgage: getRawVal('mortgage'), otherDebt: getRawVal('other_debt'), college: getRawVal('college'),
+                finalExpenses: getRawVal('final_expenses'), savings: getRawVal('savings'), investments: getRawVal('investments'),
+                existingInsurance: getRawVal('existing_insurance'), annualIncome: getRawVal('annual_income'), incomeYears: getRawVal('income_years'),
             };
             const { totalDebt, lumpSumNeeds, incomeNeeds, totalNeeds, totalAssets, netNeed } = calculateNeeds(userFinancialData);
             userFinancialData = { ...userFinancialData, totalDebt, lumpSumNeeds, incomeNeeds, totalNeeds, totalAssets, netNeed };
@@ -434,11 +469,16 @@ To help me prepare for my strategy session with my licensed agent at ARGUIDE, pl
         }
 
         function displayResults() {
-            view1.classList.add('hidden');
+            const formContainer = document.getElementById('view-1');
+            const form = document.getElementById('needs-form');
+            form.querySelectorAll('input, select, button').forEach(el => el.disabled = true);
+            calculateBtn.innerText = 'Recalculate';
+            calculateBtn.onclick = () => window.location.reload();
+
             const strategy = getSuggestedStrategy(userFinancialData);
 
             resultsContainer.innerHTML = `
-                <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg mt-12">
                     <div class="text-center mb-8">
                         <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Your Personalized Results</h2>
                         <p class="text-lg text-slate-500 mt-1">Here is a breakdown of your needs and a potential strategy to discuss.</p>
