@@ -57,10 +57,18 @@
     <!-- HEADER & NAVIGATION -->
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-bold text-slate-900">🛡️ ARGUIDE</a>
+            <a href="#home" class="flex items-center space-x-2">
+                <!-- SVG Logo -->
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-sky-600">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="text-2xl font-bold text-slate-900">ARGUIDE</span>
+            </a>
             <ul class="hidden md:flex items-center space-x-6 text-slate-600 font-medium">
                 <li><a href="#about" class="hover:text-sky-600 transition-colors">My Why</a></li>
-                <li><a href="#education" class="hover:text-sky-600 transition-colors">The Basics</a></li>
+                <li><a href="#education" class="hover:text-sky-600 transition-colors">Educate Yourself</a></li>
                 <li><a href="#checkup" class="hover:text-sky-600 transition-colors">Needs Checkup</a></li>
                 <li><a href="/blog.html" class="hover:text-sky-600 transition-colors">Blog</a></li>
                 <li><a href="#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">Request a Consultation</a></li>
@@ -72,7 +80,7 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden">
             <a href="#about" class="block py-2 px-4 text-sm text-slate-600 hover:bg-slate-100">My Why</a>
-            <a href="#education" class="block py-2 px-4 text-sm text-slate-600 hover:bg-slate-100">The Basics</a>
+            <a href="#education" class="block py-2 px-4 text-sm text-slate-600 hover:bg-slate-100">Educate Yourself</a>
             <a href="#checkup" class="block py-2 px-4 text-sm text-slate-600 hover:bg-slate-100">Needs Checkup</a>
             <a href="/blog.html" class="block py-2 px-4 text-sm text-slate-600 hover:bg-slate-100">Blog</a>
             <a href="#contact" class="block py-2 px-4 text-sm text-slate-600 hover:bg-slate-100">Request a Consultation</a>
@@ -101,21 +109,12 @@
             </div>
         </section>
 
-        <!-- EDUCATION SECTION -->
+        <!-- NEW EDUCATION SECTION -->
         <section id="education" class="py-16 md:py-24">
             <div class="text-center max-w-3xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Understanding Your Options</h2>
-                <p class="text-lg text-slate-600 mt-4">Life insurance doesn't have to be complicated. Here are the two fundamental types of protection, explained in simple terms.</p>
-            </div>
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <div class="bg-white p-8 rounded-xl shadow-lg">
-                    <h3 class="text-2xl font-bold text-sky-600">Term Life Insurance</h3>
-                    <p class="mt-2 text-slate-600">Think of this like renting protection. It's an affordable way to get a large amount of coverage for a specific period (the "term"), like 10, 20, or 30 years. It's perfect for covering temporary, high-cost needs like a mortgage or providing income until your children are financially independent.</p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg">
-                    <h3 class="text-2xl font-bold text-sky-600">Permanent Life Insurance</h3>
-                    <p class="mt-2 text-slate-600">Think of this like owning protection. It's designed to last your entire life and often includes a "cash value" component that can grow over time. It's ideal for covering permanent needs like final expenses, leaving a legacy, or for more complex estate planning strategies.</p>
-                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Knowledge is the Best Policy.</h2>
+                <p class="text-lg text-slate-600 mt-4">The best decisions are informed decisions. My goal is to empower you with clear, jargon-free knowledge so you can approach your financial protection with confidence. Explore our articles to learn the fundamentals.</p>
+                 <a href="/blog.html" class="mt-8 inline-block bg-white hover:bg-slate-100 text-sky-600 font-bold py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg border border-slate-200 transition-transform transform hover:scale-105 text-lg">Explore the Blog</a>
             </div>
         </section>
 
@@ -184,6 +183,7 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Your Advocate in the Market</h2>
                 <p class="text-lg text-slate-600 mt-4">As an independent agent, I work for you, not the insurance companies. This freedom allows me to access a wide marketplace of over 20 top-rated carriers to find the best policy and pricing for your unique situation.</p>
                 <div class="mt-12 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-y-10 gap-x-6 items-center">
+                    <!-- Carrier logos remain the same -->
                     <div class="text-center">
                         <img src="https://logo.clearbit.com/aetna.com" alt="Aetna Logo" class="h-10 mx-auto" onerror="this.parentElement.innerHTML = '<p class=\'h-10 flex items-center justify-center font-semibold text-slate-600\'>Aetna</p>'">
                         <p class="text-xs text-slate-500 mt-2">Aetna</p>
@@ -340,6 +340,7 @@ To help me prepare for my strategy session with my licensed agent at ARGUIDE, pl
                     <button type="submit" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-transform transform hover:scale-105 text-lg">Request My Complimentary Consultation</button>
                 </div>
             </form>
+            
             <p class="text-xs text-slate-500 mt-12">
                 This website provides a simplified estimate for informational purposes and is not financial advice. A licensed agent can provide a comprehensive analysis.
             </p>
@@ -367,7 +368,9 @@ To help me prepare for my strategy session with my licensed agent at ARGUIDE, pl
             const aiPromptCode = document.getElementById('ai-prompt-code');
             aiPromptCode.select();
             aiPromptCode.setSelectionRange(0, 99999);
-            navigator.clipboard.writeText(aiPromptCode.value).then(() => {
+            // Using document.execCommand for broader compatibility in iFrames
+            try {
+                document.execCommand('copy');
                 const successMsg = document.getElementById('copy-prompt-success');
                 copyPromptBtn.innerText = 'Copied!';
                 successMsg.classList.remove('hidden');
@@ -375,9 +378,9 @@ To help me prepare for my strategy session with my licensed agent at ARGUIDE, pl
                     copyPromptBtn.innerText = 'Copy Prompt';
                     successMsg.classList.add('hidden'); 
                 }, 2000);
-            }).catch(err => {
+            } catch (err) {
                 console.error('Failed to copy text: ', err);
-            });
+            }
         });
 
         // --- CALCULATOR LOGIC ---
@@ -427,7 +430,8 @@ To help me prepare for my strategy session with my licensed agent at ARGUIDE, pl
         calculateBtn.addEventListener('click', () => {
             const age = getRawVal('your_age');
             if (age < 18) {
-                alert('Please enter an age of 18 or older.');
+                // Replace alert with a more user-friendly message if possible
+                console.error('Please enter an age of 18 or older.');
                 return;
             }
             userFinancialData = {

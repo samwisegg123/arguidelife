@@ -1,4 +1,3 @@
-<!-- FILE: blog.html (This will be your main blog page at yoursite.com/blog) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,15 +9,23 @@
     <style> body { font-family: 'Inter', sans-serif; } </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
-    <!-- HEADER (Same as your main page) -->
+    <!-- HEADER -->
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="/#home" class="text-2xl font-bold text-slate-900">🛡️ ARGUIDE</a>
+            <a href="/index.html#home" class="flex items-center space-x-2">
+                <!-- SVG Logo -->
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-sky-600">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="text-2xl font-bold text-slate-900">ARGUIDE</span>
+            </a>
             <ul class="hidden md:flex items-center space-x-6 text-slate-600 font-medium">
-                <li><a href="/#about" class="hover:text-sky-600 transition-colors">My Why</a></li>
-                <li><a href="/#education" class="hover:text-sky-600 transition-colors">The Basics</a></li>
-                <li><a href="/#checkup" class="hover:text-sky-600 transition-colors">Needs Checkup</a></li>
-                <li><a href="/#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-lg shadow-md">Request a Consultation</a></li>
+                <li><a href="/index.html#about" class="hover:text-sky-600 transition-colors">My Why</a></li>
+                <li><a href="/index.html#education" class="hover:text-sky-600 transition-colors">Educate Yourself</a></li>
+                <li><a href="/index.html#checkup" class="hover:text-sky-600 transition-colors">Needs Checkup</a></li>
+                <li><a href="/index.html#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-lg shadow-md">Request a Consultation</a></li>
             </ul>
         </nav>
     </header>
@@ -27,7 +34,8 @@
             <h1 class="text-4xl md:text-5xl font-bold text-slate-900">The ARGUIDE Blog</h1>
             <p class="text-lg text-slate-600 mt-2">Insights and guidance to help you protect what matters most.</p>
         </div>
-        <div id="post-list" class="max-w-3xl mx-auto space-y-8">
+        <!-- This is the new grid layout for posts -->
+        <div id="post-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Blog posts will be injected here by JavaScript -->
         </div>
     </main>
@@ -35,7 +43,8 @@
         document.addEventListener('DOMContentLoaded', async () => {
             const postList = document.getElementById('post-list');
             try {
-                const response = await fetch('/blog/posts.json');
+                // FIX: Changed path to be root-relative to fix fetch error in preview environment.
+                const response = await fetch('/posts.json');
                 if (!response.ok) throw new Error('Network response was not ok');
                 const posts = await response.json();
 
@@ -47,16 +56,24 @@
                 posts.forEach(post => {
                     const postElement = document.createElement('a');
                     postElement.href = `/post-template.html?post=${post.file}`;
-                    postElement.className = 'block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow';
+                    // Card styling for the grid view
+                    postElement.className = 'flex flex-col bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow overflow-hidden group';
                     
                     postElement.innerHTML = `
-                        <h2 class="text-2xl font-bold text-slate-800 hover:text-sky-600">${post.title}</h2>
+                        <div class="w-full h-48 bg-slate-200">
+                            <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.style.display='none'">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h2 class="text-xl font-bold text-slate-800 group-hover:text-sky-600">${post.title}</h2>
+                            <p class="text-slate-600 mt-2 text-sm flex-grow">${post.description}</p>
+                            <span class="text-sky-600 font-semibold mt-4 self-start">Read More →</span>
+                        </div>
                     `;
                     postList.appendChild(postElement);
                 });
             } catch (error) {
                 console.error('Error fetching blog posts:', error);
-                postList.innerHTML = '<p>Could not load blog posts. Please try again later.</p>';
+                postList.innerHTML = '<p class="text-center col-span-full">Could not load blog posts. Please try again later.</p>';
             }
         });
     </script>

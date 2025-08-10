@@ -1,50 +1,74 @@
 [
   {
-  "file": "twelfth-post.md",
-  "title": "You Don't Have a Will? Why That's a Bigger Problem Than You Think"
+    "file": "twelfth-post.md",
+    "title": "You Don't Have a Will? Why That's a Bigger Problem Than You Think",
+    "description": "Learn why a will is a critical tool for protecting your family and how it partners with your life insurance.",
+    "image": "https://placehold.co/600x400/0ea5e9/FFFFFF?text=Will+%26+Testament"
   },
   {
     "file": "11th-post.md",
-    "title": "Infinite Banking: Your Own Private Bank or Just Marketing Hype?"
+    "title": "Infinite Banking: Your Own Private Bank or Just Marketing Hype?",
+    "description": "A balanced look at the Infinite Banking Concept, separating the powerful strategy from the sales hype.",
+    "image": "https://placehold.co/600x400/0284c7/FFFFFF?text=Infinite+Banking"
   },
   {
     "file": "tenth-post.md",
-    "title": "The Ultimate Guide to Life Insurance Riders"
+    "title": "The Ultimate Guide to Life Insurance Riders",
+    "description": "Learn how to customize your policy with riders for living benefits, long-term care, and more.",
+    "image": "https://placehold.co/600x400/0369a1/FFFFFF?text=Policy+Riders"
   },
   {
     "file": "ninth-post.md",
-    "title": "The Overlooked Asset How Life Insurance Protects Your Small Business"
+    "title": "The Overlooked Asset: How Life Insurance Protects Your Small Business",
+    "description": "Discover how buy-sell agreements and key person insurance can secure your business's future.",
+    "image": "https://placehold.co/600x400/0ea5e9/FFFFFF?text=Business+Protection"
   },
   {
     "file": "eighth-post.md",
-    "title": "What is a Living Benefits Rider? The Feature You Hope You Never Need, But Should Always Have"
+    "title": "What is a Living Benefits Rider?",
+    "description": "The feature you hope you never need, but should always have. Learn how you can access your death benefit while you're still living.",
+    "image": "https://placehold.co/600x400/38bdf8/FFFFFF?text=Living+Benefits"
   },
   {
     "file": "seventh-post.md",
-    "title": "The Best Time to Buy Life Insurance Was Yesterday. The Second Best Time is Now"
+    "title": "The Best Time to Buy Life Insurance Was Yesterday",
+    "description": "An honest look at why your age and health make today the most affordable time to get coverage.",
+    "image": "https://placehold.co/600x400/0284c7/FFFFFF?text=Act+Now"
   },
   {
     "file": "sixth-post.md",
-    "title": "What Does Life Insurance Actually Cost? A Jargon-Free Guide to Premiums"
+    "title": "What Does Life Insurance Actually Cost?",
+    "description": "A jargon-free guide to premiums and the factors that determine your rate.",
+    "image": "https://placehold.co/600x400/0369a1/FFFFFF?text=Affordability"
   },
   {
     "file": "fifth-post.md",
-    "title": "Life Insurance After 50 Your Honest Guide to Options and Costs"
+    "title": "Life Insurance After 50: Your Honest Guide",
+    "description": "It's not too late. Explore your options and the unique strategies for securing coverage later in life.",
+    "image": "https://placehold.co/600x400/0ea5e9/FFFFFF?text=Insurance+Over+50"
   },
   {
     "file": "fourth-post.md",
-    "title": "IUL 101: An Honest Guide to Indexed Universal Life Insurance"
+    "title": "IUL 101: An Honest Guide to Indexed Universal Life",
+    "description": "Understand the pros and cons of IULs with our simple sailboat analogy.",
+    "image": "https://placehold.co/600x400/38bdf8/FFFFFF?text=IUL+Explained"
   },
   {
     "file": "third-post.md",
-    "title": "My Father's Story: Why a Will and Life Insurance Are the Greatest Acts of Love"
+    "title": "My Father's Story: Why a Will and Life Insurance Are Acts of Love",
+    "description": "A personal look at the importance of planning for the unexpected to protect the ones you love.",
+    "image": "https://placehold.co/600x400/0284c7/FFFFFF?text=A+Personal+Story"
   },
   {
     "file": "second-post.md",
-    "title": "Term vs. Permanent Life Insurance: The Honest, Jargon-Free Guide"
+    "title": "Term vs. Permanent Life Insurance: The Honest, Jargon-Free Guide",
+    "description": "Renting vs. Owning: The simple analogy you need to understand the two main types of life insurance.",
+    "image": "https://placehold.co/600x400/0369a1/FFFFFF?text=Term+vs.+Perm"
   },
   {
     "file": "first-post.md",
-    "title": "5 Questions to Ask Before You Buy Any Life Insurance Policy"
+    "title": "5 Questions to Ask Before You Buy Any Life Insurance Policy",
+    "description": "Empower yourself with the right questions to ensure you're getting the policy that truly fits your needs.",
+    "image": "https://placehold.co/600x400/0ea5e9/FFFFFF?text=Key+Questions"
   }
 ]
