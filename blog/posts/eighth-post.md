@@ -1,10 +1,12 @@
+# What is a Living Benefits Rider? The Feature You Hope You Never Need, But Should Always Have
+
 When most people think of life insurance, they think of a death benefit—a payment that goes to their family after they pass away. But what if your policy could also protect you while you're still living?
 
 That's the powerful idea behind **Living Benefits Riders.**
 
 This is one of the most significant innovations in the life insurance industry, and my mission is to make sure every client understands it. A "rider" is simply an add-on or an extra feature you can attach to your policy. A Living Benefits rider is a feature that allows you to access a portion of your death benefit *early* if you suffer a qualifying major illness.
 
-### How It Works: A Financial Safety Net
+## How It Works: A Financial Safety Net
 
 Imagine you have a $500,000 life insurance policy. You are suddenly diagnosed with a critical illness, like cancer, a heart attack, or a stroke. The medical bills are piling up, and you may not be able to work.
 
@@ -31,14 +33,15 @@ Without living benefits, your life insurance policy can't help you in this situa
 ---
 
 That money is yours to use however you need:
-* Pay for medical treatments your health insurance doesn't cover.
-* Replace your lost income while you recover.
-* Make your home more accessible.
-* Simply reduce financial stress so you can focus on getting better.
+
+-   Pay for medical treatments your health insurance doesn't cover.
+-   Replace your lost income while you recover.
+-   Make your home more accessible.
+-   Simply reduce financial stress so you can focus on getting better.
 
 Your death benefit would then be reduced by the amount you took out. It's a powerful way to make your policy work for you in two different scenarios.
 
-### The Best Part: It's Often Included at No Extra Cost
+## The Best Part: It's Often Included at No Extra Cost
 
 On many modern term and permanent life insurance policies, these riders are automatically included for little to no additional premium. It's a feature that adds an incredible layer of protection, and you should always ask if it's available.
 
