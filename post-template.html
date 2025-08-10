@@ -64,7 +64,6 @@
                 document.title = `${postData.title} | ARGUIDE Blog`;
                 postContent.innerHTML = `
                     <h1 class="text-3xl md:text-4xl font-bold text-slate-900">${postData.title}</h1>
-                    <p class="text-slate-500 mt-2">Published on: ${new Date(postData.date).toLocaleDateString()}</p>
                     <div class="prose lg:prose-xl mt-8 text-slate-600 leading-relaxed">
                         ${marked.parse(markdown)}
                     </div>
