@@ -1,3 +1,5 @@
+# My Father's Story: Why a Will and Life Insurance Are the Greatest Acts of Love
+
 In 2025, my father passed away from a stroke. He was 64. He was healthy. He wasn't on any medication. One moment he was here, and the next, he was gone.
 
 The grief was overwhelming. But what I didn't expect was the second wave that hit right after: the chaos.
@@ -22,6 +24,8 @@ And life insurance? It's not just a check.
 My experience changed the course of my life. I became a licensed agent not because I love the insurance industry, but because I believe every family deserves to be protected from the chaos my family went through.
 
 I believe in this so strongly because I have lived the alternative. My mission is to make sure no other family has to.
+
+---
 
 If you've been putting off this conversation, I understand. It's not easy to think about. But I promise you, the 30 minutes it takes to put a plan in place is one of the greatest gifts you will ever give to the people you love most.
 

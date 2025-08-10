@@ -1,3 +1,5 @@
+# IUL 101: An Honest Guide to Indexed Universal Life Insurance
+
 IUL. You’ve probably seen these three letters online, often surrounded by a lot of hype. It’s one of the most talked-about and least understood products in the financial world. Some tout it as a magic bullet for retirement, while others dismiss it as too complex.
 
 The truth, as it often is, lies somewhere in the middle.

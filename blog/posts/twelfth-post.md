@@ -19,18 +19,19 @@ Not having a will doesn't mean decisions don't get made. **It just means you don
     </div>
 </div>
 
+---
+
 ## The Three Most Important Jobs of a Will
 
 A will does more than just distribute your assets. It’s a powerful legal document that accomplishes three critical tasks:
 
-### 1. It Appoints a Guardian for Your Children
-This is, by far, the most important reason for any parent to have a will. If you have minor children, your will is the only place where you can legally name the person you want to raise them. Without a will, a court will make that decision, and it may not be the person you would have chosen.
+-   **It Appoints a Guardian for Your Children:** This is, by far, the most important reason for any parent to have a will. If you have minor children, your will is the only place where you can legally name the person you want to raise them. Without a will, a court will make that decision, and it may not be the person you would have chosen.
 
-### 2. It Names Your Executor
-The executor is the person you trust to be in charge of carrying out your will's instructions. They will be responsible for paying off any debts, gathering your assets, and distributing them to the people you've named. Without a will, the court appoints someone, which can lead to delays and potential conflicts.
+-   **It Names Your Executor:** The executor is the person you trust to be in charge of carrying out your will's instructions. They will be responsible for paying off any debts, gathering your assets, and distributing them to the people you've named. Without a will, the court appoints someone, which can lead to delays and potential conflicts.
 
-### 3. It Directs Your Assets with Precision
-Do you want to leave a specific piece of jewelry to a niece? Your classic car to a sibling? Do you want your home to go to your spouse? Your will allows you to specify exactly who gets what. Without it, state law decides, and the distribution may be very different from what you intended.
+-   **It Directs Your Assets with Precision:** Do you want to leave a specific piece of jewelry to a niece? Your classic car to a sibling? Do you want your home to go to your spouse? Your will allows you to specify exactly who gets what. Without it, state law decides, and the distribution may be very different from what you intended.
+
+---
 
 ## Life Insurance and Your Will: A Necessary Partnership
 
@@ -45,4 +46,4 @@ One without the other leaves your family with an incomplete puzzle.
 
 Creating a will is not about planning for death. It's about organizing your affairs as a final, powerful act of love and responsibility for the people you are working so hard to protect.
 
-You don't have to have it all figured out to get started. A conversation with a legal professional can make this process far simpler than you imagine. For the financial protection side of your plan, I'm here to help.
+You don't have to have it all figured out to get started. A conversation with a legal professional can make this process far simpler than you imagine. For the financial protection side of your plan, [I'm here to help.](/#contact)

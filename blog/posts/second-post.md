@@ -1,3 +1,5 @@
+# Term vs. Permanent Life Insurance: The Honest, Jargon-Free Guide
+
 If you’ve started looking into life insurance, you’ve probably seen the words "Term" and "Permanent" everywhere. The industry often makes these concepts seem far more complicated than they actually are.
 
 Let’s clear up the confusion with a simple, honest guide.

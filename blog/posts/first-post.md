@@ -1,3 +1,5 @@
+# 5 Questions to Ask Before You Buy Any Life Insurance Policy
+
 Buying life insurance can feel overwhelming. It’s a world of jargon, complex products, and sales pressure. After losing my father without any preparation, I learned firsthand how confusing it can be. That experience is why I became an agent—to help families navigate this process with clarity and confidence.
 
 Before you sign any application, you deserve to feel 100% certain about your decision. The right agent won’t just sell you a policy; they will act as your guide.

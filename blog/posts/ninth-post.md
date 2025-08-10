@@ -1,3 +1,5 @@
+# The Overlooked Asset: How Life Insurance Protects Your Small Business
+
 As a small business owner, you are the engine of your company. You wear a dozen hats, manage countless risks, and pour your heart into building something that lasts. You likely have insurance for your building, your equipment, and your liability.
 
 But have you insured your most valuable asset? **You.**

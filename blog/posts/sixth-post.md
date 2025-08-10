@@ -1,3 +1,5 @@
+# What Does Life Insurance Actually Cost? A Jargon-Free Guide to Premiums
+
 Let's be honest: the biggest question on everyone's mind when it comes to life insurance is, "How much is this going to cost me?"
 
 There's a persistent myth that life insurance is incredibly expensive. A recent study showed that most people overestimate the true cost by more than 3x! The reality is that for a healthy individual, securing hundreds of thousands of dollars in protection can often cost less than a daily coffee habit or a monthly streaming subscription.

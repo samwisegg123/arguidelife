@@ -1,3 +1,5 @@
+# The Ultimate Guide to Life Insurance Riders
+
 A life insurance policy is built on a simple, powerful promise: a death benefit to protect your loved ones. But a modern policy can do so much more. The key to unlocking this potential is through **riders**.
 
 Think of your main policy as the car, and riders as optional features you can add—like GPS, heated seats, or a sunroof. They allow you to customize your coverage to fit your exact needs, often for a small additional cost. Some are even included for free.

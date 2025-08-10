@@ -1,3 +1,5 @@
+# Infinite Banking: Your Own Private Bank or Just Marketing Hype?
+
 "Become Your Own Banker." "The Infinite Banking Concept." You’ve likely seen these phrases online, promising a secret financial strategy used by the wealthy. It's a topic surrounded by intense passion, with some calling it a financial miracle and others dismissing it as marketing hype.
 
 As a compassionate guide, my mission is to cut through the noise and give you an honest, balanced look at what Infinite Banking really is.
