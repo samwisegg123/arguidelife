@@ -51,8 +51,9 @@
             try {
                 // Fetch both the manifest and the post content at the same time
                 const [manifestResponse, postResponse] = await Promise.all([
-                    fetch('posts.json'), // Using relative path
-                    fetch(`posts/${postFile}`) // Using relative path
+                    fetch('/posts.json'),
+                    // FIX: Corrected path to fetch markdown files from the root directory.
+                    fetch(`/${postFile}`)
                 ]);
 
                 if (!manifestResponse.ok) throw new Error('Could not load blog manifest');
